@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NexTiers — Sword</title>
+<link rel="preconnect" href="https://mc-heads.net" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0b0d12;
+    color: #e6e8ee;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11, 13, 18, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid #1c2029;
+  }
+  .navbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.5px;
+  }
+  .logo-mark {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00b4d8, #7c3aed);
+    display: grid; place-items: center;
+    font-size: 0.9rem;
+  }
+  .logo-text span { color: #00b4d8; }
+
+  .nav-links { display: flex; align-items: center; gap: 6px; }
+  .nav-links a {
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #98a1b3;
+    transition: color .18s, background .18s;
+  }
+  .nav-links a:hover { color: #fff; background: #161a22; }
+  .nav-links a.active {
+    color: #fff;
+    background: #161a22;
+    box-shadow: inset 0 0 0 1px #262c38;
+  }
+  .nav-links a.discord-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    background: #5865F2;
+    padding: 8px 14px;
+  }
+  .nav-links a.discord-link:hover { background: #4752c4; }
+
+  main {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 26px 20px 70px;
+    width: 100%;
+  }
+
+  .search {
+    position: relative;
+    margin-bottom: 22px;
+  }
+  .search svg {
+    position: absolute;
+    left: 13px; top: 50%;
+    transform: translateY(-50%);
+    width: 15px; height: 15px;
+    stroke: #6d7688;
+    pointer-events: none;
+  }
+  .search input {
+    width: 100%;
+    padding: 11px 14px 11px 38px;
+    background: #12161f;
+    border: 1px solid #1e2431;
+    border-radius: 10px;
+    color: #e6e8ee;
+    font-size: 0.92rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .18s;
+  }
+  .search input:focus { border-color: #00b4d8; }
+  .search input::placeholder { color: #5a6377; }
+
+  .tier-section { margin-bottom: 26px; }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 0 2px;
+  }
+  .tier-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    letter-spacing: -0.2px;
+  }
+  .tier-count {
+    color: #6d7688;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .tier-line {
+    flex: 1;
+    height: 1px;
+    background: #1e2431;
+  }
+
+  .c-ht1 { background: #ffd700; color: #1a1400; }
+  .c-lt1 { background: #ffe066; color: #1a1400; }
+  .c-ht2 { background: #e2e8f0; color: #14161a; }
+  .c-lt2 { background: #c8d0dc; color: #14161a; }
+  .c-ht3 { background: #e0965a; color: #241206; }
+  .c-lt3 { background: #c58354; color: #241206; }
+  .c-ht4 { background: #4a5568; color: #e6e8ee; }
+  .c-lt4 { background: #333c4c; color: #c7cdda; }
+  .c-ht5 { background: #2a3140; color: #a7b0c2; }
+  .c-lt5 { background: #1e2431; color: #8b94a7; }
+
+  .player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .player-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #12161f;
+    border: 1px solid #1e2431;
+    border-radius: 12px;
+    transition: border-color .18s, background .18s;
+  }
+  .player-card:hover {
+    border-color: #2c3444;
+    background: #161b26;
+  }
+
+  .skin-wrap {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 9px;
+    background: #1a1f2b;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px #262c38;
+  }
+  .skin-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .player-info { min-width: 0; flex: 1; }
+  .player-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .player-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: #6d7688;
+    margin-top: 2px;
+  }
+  .player-meta .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+  }
+  .player-tag {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(0, 180, 216, 0.12);
+    color: #00b4d8;
+    border: 1px solid rgba(0, 180, 216, 0.25);
+  }
+
+  .empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: #6d7688;
+  }
+  .empty h3 { color: #98a1b3; font-size: 1rem; margin-bottom: 5px; }
+
+  footer {
+    border-top: 1px solid #1c2029;
+    padding: 22px 20px;
+    text-align: center;
+    color: #5a6377;
+    font-size: 0.82rem;
+    background: #0a0c10;
+  }
+  footer a { color: #98a1b3; }
+  footer a:hover { color: #00b4d8; }
+
+  @media (max-width: 600px) {
+    .navbar-inner { padding: 0 14px; }
+    main { padding: 18px 14px 60px; }
+    .nav-links a:not(.discord-link):not(.active) { display: none; }
+    .player-meta { font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">⚔️</div>
+      <div class="logo-text">Nex<span>Tiers</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active">Sword</a>
+      <a href="#" class="discord-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.418 2.157-2.418 1.21 0 2.176 1.096 2.157 2.418 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.176 1.096 2.157 2.418 0 1.334-.946 2.419-2.157 2.419z"/></svg>
+        Discord
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Поиск игрока..." autocomplete="off" />
+  </div>
+
+  <div id="tierlist"></div>
+</main>
+
+<footer>
+  © 2026 NexTiers · Sword Kit Tierlist · Скины: <a href="https://mc-heads.net" target="_blank" rel="noopener">mc-heads.net</a>
+</footer>
+
+<script>
+const TIERS = ["HT1", "LT1", "HT2", "LT2", "HT3", "LT3", "HT4", "LT4", "HT5", "LT5"];
+
+const PLAYERS = [
+  { name: "AlexPvP",        uuid: "069a79f444e94726a5befca90e38aaf5", tier: "HT1", discord: "alexpvp",        region: "EU", points: 3120 },
+  { name: "Steve_Pro",      uuid: "8667ba71b85a4004af54457a9734eed7", tier: "HT1", discord: "steve_pro",      region: "NA", points: 3080 },
+  { name: "CreeperKing",    uuid: "c06f89064c8a49119c29ea1dbd1aab82", tier: "LT1", discord: "creeperking",    region: "EU", points: 2950 },
+  { name: "EnderQueen",     uuid: "ec561538f3fd461daffd1e8e5f4b8b8a", tier: "LT1", discord: "enderqueen",     region: "AS", points: 2910 },
+  { name: "Notch",          uuid: "069a79f444e94726a5befca90e38aaf5", tier: "HT2", discord: "notch",          region: "NA", points: 2780 },
+  { name: "Herobrine",      uuid: "8667ba71b85a4004af54457a9734eed7", tier: "HT2", discord: "herobrine",      region: "EU", points: 2740 },
+  { name: "DiamondSword",   uuid: "c06f89064c8a49119c29ea1dbd1aab82", tier: "LT2", discord: "diamondsword",   region: "EU", points: 2650 },
+  { name: "NetheriteX",     uuid: "ec561538f3fd461daffd1e8e5f4b8b8a", tier: "LT2", discord: "netheritex",     region: "AS", points: 2600 },
+  { name: "PixelNinja",     uuid: "069a79f444e94726a5befca90e38aaf5", tier: "HT3", discord: "pixelninja",     region: "NA", points: 2480 },
+  { name: "RedstoneGuy",    uuid: "8667ba71b85a4004af54457a9734eed7", tier: "HT3", discord: "redstoneguy",    region: "EU", points: 2430 },
+  { name: "BlazeStorm",     uuid: "c06f89064c8a49119c29ea1dbd1aab82", tier: "LT3", discord: "blazestorm",     region: "EU", points: 2320 },
+  { name: "FrostBite",      uuid: "ec561538f3fd461daffd1e8e5f4b8b8a", tier: "LT3", discord: "frostbite",      region: "NA", points: 2280 },
+  { name: "ShadowWolf",     uuid: "069a79f444e94726a5befca90e38aaf5", tier: "HT4", discord: "shadowwolf",     region: "EU", points: 2140 },
+  { name: "GoldenApple",    uuid: "8667ba71b85a4004af54457a9734eed7", tier: "HT4", discord: "goldenapple",    region: "AS", points: 2090 },
+  { name: "IronGolem",      uuid: "c06f89064c8a49119c29ea1dbd1aab82", tier: "LT4", discord: "irongolem",      region: "EU", points: 1980 },
+  { name: "SkeletonArcher", uuid: "ec561538f3fd461daffd1e8e5f4b8b8a", tier: "LT4", discord: "skeletonarcher", region: "NA", points: 1930 },
+  { name: "ZombieSlayer",   uuid: "069a79f444e94726a5befca90e38aaf5", tier: "HT5", discord: "zombieslayer",   region: "EU", points: 1780 },
+  { name: "PiglinTrader",   uuid: "8667ba71b85a4004af54457a9734eed7", tier: "HT5", discord: "piglintrader",   region: "AS", points: 1720 },
+  { name: "WitherBoss",     uuid: "c06f89064c8a49119c29ea1dbd1aab82", tier: "LT5", discord: "witherboss",     region: "EU", points: 1600 },
+  { name: "DragonSlayer",   uuid: "ec561538f3fd461daffd1e8e5f4b8b8a", tier: "LT5", discord: "dragonslayer",   region: "NA", points: 1550 }
+];
+
+const TIER_CLASS = {
+  HT1: "c-ht1", LT1: "c-lt1", HT2: "c-ht2", LT2: "c-lt2",
+  HT3: "c-ht3", LT3: "c-lt3", HT4: "c-ht4", LT4: "c-lt4",
+  HT5: "c-ht5", LT5: "c-lt5"
+};
+
+function skinUrl(p, size) {
+  return `https://mc-heads.net/avatar/${p.uuid}/${size}`;
+}
+function skinFallback(p) {
+  return `https://mc-heads.net/avatar/${encodeURIComponent(p.name)}/88`;
+}
+
+const tierlistEl = document.getElementById("tierlist");
+const searchInput = document.getElementById("searchInput");
+let currentQuery = "";
+
+function plural(n, one, few, many) {
+  const m10 = n % 10, m100 = n % 100;
+  if (m10 === 1 && m100 !== 11) return one;
+  if (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20)) return few;
+  return many;
+}
+
+function buildCard(p) {
+  const card = document.createElement("div");
+  card.className = "player-card";
+
+  const skinWrap = document.createElement("div");
+  skinWrap.className = "skin-wrap";
+  const img = document.createElement("img");
+  img.alt = p.name;
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.width = 44;
+  img.height = 44;
+  img.src = skinUrl(p, 88);
+  img.onerror = function () {
+    this.onerror = null;
+    this.src = skinFallback(p);
+  };
+  skinWrap.appendChild(img);
+
+  const info = document.createElement("div");
+  info.className = "player-info";
+
+  const name = document.createElement("div");
+  name.className = "player-name";
+  name.textContent = p.name;
+
+  const meta = document.createElement("div");
+  meta.className = "player-meta";
+  meta.innerHTML = `<span class="dot"></span> @${p.discord} · ${p.region} · ${p.points} pts`;
+
+  info.appendChild(name);
+  info.appendChild(meta);
+
+  const tag = document.createElement("div");
+  tag.className = "player-tag";
+  tag.textContent = p.tier;
+
+  card.appendChild(skinWrap);
+  card.appendChild(info);
+  card.appendChild(tag);
+  return card;
+}
+
+function buildSection(tier, players) {
+  if (!players.length) return null;
+
+  const section = document.createElement("section");
+  section.className = "tier-section";
+
+  const header = document.createElement("div");
+  header.className = "tier-header";
+
+  const chip = document.createElement("div");
+  chip.className = `tier-chip ${TIER_CLASS[tier]}`;
+  chip.textContent = tier;
+
+  const count = document.createElement("div");
+  count.className = "tier-count";
+  count.textContent = `${players.length} ${plural(players.length, "игрок", "игрока", "игроков")}`;
+
+  const line = document.createElement("div");
+  line.className = "tier-line";
+
+  header.appendChild(chip);
+  header.appendChild(count);
+  header.appendChild(line);
+
+  const list = document.createElement("div");
+  list.className = "player-list";
+  players.forEach(p => list.appendChild(buildCard(p)));
+
+  section.appendChild(header);
+  section.appendChild(list);
+  return section;
+}
+
+function render() {
+  tierlistEl.innerHTML = "";
+  const q = currentQuery.trim().toLowerCase();
+
+  const filtered = PLAYERS.filter(p => {
+    if (!q) return true;
+    return p.name.toLowerCase().includes(q) || p.discord.toLowerCase().includes(q);
+  });
+
+  const groups = {};
+  TIERS.forEach(t => groups[t] = []);
+  filtered.forEach(p => { if (groups[p.tier]) groups[p.tier].push(p); });
+
+  let rendered = 0;
+  TIERS.forEach(tier => {
+    const sec = buildSection(tier, groups[tier]);
+    if (sec) { tierlistEl.appendChild(sec); rendered++; }
+  });
+
+  if (!rendered) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.innerHTML = `<h3>Ничего не найдено</h3><div>Попробуй другой ник.</div>`;
+    tierlistEl.appendChild(empty);
+  }
+}
+
+searchInput.addEventListener("input", e => {
+  currentQuery = e.target.value;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
