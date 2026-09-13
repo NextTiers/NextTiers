@@ -104,6 +104,14 @@
     "points": 0
   },
   {
+    "name": "Svetlogay",
+    "discord": "kulmikrovalnovka",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 0
+  },
+  {
     "name": "wasf0und",
     "discord": "wasf0und",
     "uuid": "",
@@ -296,11 +304,27 @@
     "points": 0
   },
   {
+    "name": "chookavo78",
+    "discord": "chookavo78",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
     "name": "AWESA",
     "discord": "awesa",
     "uuid": "",
     "tier": "HT3",
     "status": "active",
+    "points": 0
+  },
+  {
+    "name": "delyxzz",
+    "discord": "minetka340",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
     "points": 0
   },
   {
@@ -338,6 +362,14 @@
   {
     "name": "_meowmin",
     "discord": ".meowmin.",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
+    "name": "madikosh",
+    "discord": "alkastor",
     "uuid": "",
     "tier": null,
     "status": "none",
@@ -411,7 +443,7 @@
     "name": "yeschapskii",
     "discord": "yeschapskiiy",
     "uuid": "",
-    "tier": "HT3",
+    "tier": "HT1",
     "status": "active",
     "points": 0
   },
@@ -533,6 +565,14 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
+    "points": 0
+  },
+  {
+    "name": "doni12124658",
+    "discord": "doni12124658",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
     "points": 0
   }
 ]
