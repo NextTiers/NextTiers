@@ -27,9 +27,9 @@
     "name": "vqeert",
     "discord": "vqertstst",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "LT5",
+    "status": "active",
+    "points": 1
   },
   {
     "name": "enforceds3x",
