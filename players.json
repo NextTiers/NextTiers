@@ -203,8 +203,8 @@
     "name": "NameSwitcher",
     "discord": "stillernames",
     "uuid": "",
-    "tier": "LT2",
-    "status": "active",
+    "tier": null,
+    "status": "none",
     "points": 0
   },
   {
