@@ -5,7 +5,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "FloxKey",
@@ -21,7 +21,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "vqeert",
@@ -61,7 +61,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "MrOreshek",
@@ -85,7 +85,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "wews",
@@ -101,7 +101,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "Svetlogay",
@@ -109,7 +109,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "wasf0und",
@@ -117,7 +117,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "Incvezy_WW",
@@ -125,7 +125,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "iwtrope",
@@ -133,7 +133,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "k0dieswii",
@@ -141,7 +141,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "eXuniportment",
@@ -149,7 +149,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "ne_nefort1",
@@ -173,7 +173,7 @@
     "uuid": "",
     "tier": "HT4",
     "status": "active",
-    "points": 0
+    "points": 4
   },
   {
     "name": "sydletlll",
@@ -197,23 +197,23 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "NameSwitcher",
     "discord": "stillernames",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "RLT2",
+    "status": "retired",
+    "points": 20
   },
   {
     "name": "ve58st",
     "discord": "ve58st",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "RLT2",
+    "status": "retired",
+    "points": 20
   },
   {
     "name": "bogkm",
@@ -221,7 +221,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "okak_gazan67",
@@ -269,7 +269,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "TryToGetHT1",
@@ -277,7 +277,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "xmvysNmJ",
@@ -301,7 +301,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "chookavo78",
@@ -317,7 +317,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "delyxzz",
@@ -341,7 +341,7 @@
     "uuid": "",
     "tier": "LT2",
     "status": "active",
-    "points": 0
+    "points": 20
   },
   {
     "name": "xsmthngd",
@@ -349,7 +349,7 @@
     "uuid": "",
     "tier": "LT5",
     "status": "active",
-    "points": 0
+    "points": 1
   },
   {
     "name": "xcalibur",
@@ -357,7 +357,7 @@
     "uuid": "",
     "tier": "HT4",
     "status": "active",
-    "points": 0
+    "points": 4
   },
   {
     "name": "_meowmin",
@@ -389,7 +389,7 @@
     "uuid": "",
     "tier": "HT4",
     "status": "active",
-    "points": 0
+    "points": 4
   },
   {
     "name": "hardoss",
@@ -405,7 +405,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "sh1dow_",
@@ -421,7 +421,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "whyangelcry",
@@ -429,7 +429,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "halluwadeena",
@@ -437,7 +437,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "yeschapskii",
@@ -445,7 +445,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "observer.",
@@ -453,7 +453,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "anett6969",
@@ -461,7 +461,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "XdeadForDerik",
@@ -469,7 +469,7 @@
     "uuid": "",
     "tier": "LT2",
     "status": "active",
-    "points": 0
+    "points": 20
   },
   {
     "name": "d3lied",
@@ -477,7 +477,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "eblaklak0371",
@@ -485,7 +485,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "Melok_agro",
@@ -501,7 +501,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "Ezhak_bread",
@@ -509,7 +509,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "lifelessg0d",
@@ -517,7 +517,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "badvaseline",
@@ -525,7 +525,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "dualrose",
@@ -533,7 +533,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "iwantyourlips",
@@ -541,7 +541,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "bebrfage",
@@ -549,7 +549,7 @@
     "uuid": "",
     "tier": "HT3",
     "status": "active",
-    "points": 0
+    "points": 10
   },
   {
     "name": "Конорфн | @ для помощи",
@@ -565,7 +565,7 @@
     "uuid": "",
     "tier": "LT3",
     "status": "active",
-    "points": 0
+    "points": 6
   },
   {
     "name": "doni12124658",
