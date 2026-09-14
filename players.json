@@ -502,5 +502,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "! derik.na.opite",
+    "discord": ".sosidex",
+    "uuid": "",
+    "tier": "LT2",
+    "status": "active",
+    "points": 20
   }
 ]
