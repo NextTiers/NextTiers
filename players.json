@@ -104,7 +104,7 @@
     "points": 6
   },
   {
-    "name": "Svetlogay",
+    "name": "Светлый гей",
     "discord": "kulmikrovalnovka",
     "uuid": "",
     "tier": "HT3",
@@ -182,14 +182,6 @@
     "tier": "LT3",
     "status": "active",
     "points": 6
-  },
-  {
-    "name": "NameSwitcher",
-    "discord": "stillernames",
-    "uuid": "",
-    "tier": "RLT2",
-    "status": "retired",
-    "points": 20
   },
   {
     "name": "bogkm",
