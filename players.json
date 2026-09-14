@@ -486,5 +486,13 @@
     "tier": "RLT2",
     "status": "retired",
     "points": 20
+  },
+  {
+    "name": "r33q",
+    "discord": "mega_kola",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
