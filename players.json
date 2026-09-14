@@ -187,9 +187,9 @@
     "name": "NameSwitcher",
     "discord": "stillernames",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "RLT2",
+    "status": "retired",
+    "points": 20
   },
   {
     "name": "bogkm",
