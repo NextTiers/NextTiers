@@ -491,9 +491,9 @@
     "name": "roughard",
     "discord": "lifelessg0d",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "LT3",
+    "status": "active",
+    "points": 6
   },
   {
     "name": "Crow_WellNow",
