@@ -486,5 +486,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "Den",
+    "discord": "den087662",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
