@@ -243,9 +243,9 @@
     "name": "sameregion",
     "discord": "sameregion",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "LT3",
+    "status": "active",
+    "points": 6
   },
   {
     "name": "chookavo78",
