@@ -531,8 +531,8 @@
     "name": "dualrose",
     "discord": "dualrose",
     "uuid": "",
-    "tier": null,
-    "status": "none",
+    "tier": "LT3",
+    "status": "active",
     "points": 0
   },
   {
