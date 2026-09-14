@@ -144,14 +144,6 @@
     "points": 10
   },
   {
-    "name": "eXuniportment",
-    "discord": "9x8ru",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
     "name": "ne_nefort1",
     "discord": "ne_nefort1",
     "uuid": "",
@@ -232,24 +224,8 @@
     "points": 0
   },
   {
-    "name": "hev0",
-    "discord": "sky0xx_11262",
-    "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
     "name": "YollTop",
     "discord": "etrryu",
-    "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "mega_kola",
-    "discord": "mega_kola",
     "uuid": "",
     "tier": null,
     "status": "none",
@@ -494,14 +470,6 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "Motyashkin",
-    "discord": "iboshaprime",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
   },
   {
     "name": "Ezhak_bread",
