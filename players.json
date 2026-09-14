@@ -491,9 +491,9 @@
     "name": "roughard",
     "discord": "lifelessg0d",
     "uuid": "",
-    "tier": "LT3",
-    "status": "active",
-    "points": 6
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "Crow_WellNow",
@@ -504,7 +504,7 @@
     "points": 0
   },
   {
-    "name": "! derik.na.opite",
+    "name": "XdeadForDerik",
     "discord": ".sosidex",
     "uuid": "",
     "tier": "LT2",
