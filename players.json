@@ -184,6 +184,14 @@
     "points": 20
   },
   {
+    "name": "ve58st",
+    "discord": "ve58st",
+    "uuid": "",
+    "tier": "RLT2",
+    "status": "retired",
+    "points": 20
+  },
+  {
     "name": "bogkm",
     "discord": "europeslayer",
     "uuid": "",
@@ -202,6 +210,14 @@
   {
     "name": "YollTop",
     "discord": "etrryu",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
+    "name": "r33q",
+    "discord": "mega_kola",
     "uuid": "",
     "tier": null,
     "status": "none",
@@ -270,6 +286,22 @@
     "tier": "HT3",
     "status": "active",
     "points": 10
+  },
+  {
+    "name": "Crow_WellNow",
+    "discord": "den087662",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
+    "name": "Telyxn",
+    "discord": "telyxn",
+    "uuid": "",
+    "tier": "LT2",
+    "status": "active",
+    "points": 20
   },
   {
     "name": "xsmthngd",
@@ -384,6 +416,14 @@
     "points": 10
   },
   {
+    "name": "XdeadForDerik",
+    "discord": ".sosidex",
+    "uuid": "",
+    "tier": "LT2",
+    "status": "active",
+    "points": 20
+  },
+  {
     "name": "d3lied",
     "discord": "d3lied",
     "uuid": "",
@@ -410,6 +450,14 @@
   {
     "name": "Ezhak_bread",
     "discord": "ezhak_bread",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
+    "name": "roughard",
+    "discord": "lifelessg0d",
     "uuid": "",
     "tier": "HT3",
     "status": "active",
@@ -462,53 +510,5 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "Telyxn",
-    "discord": "telyxn",
-    "uuid": "",
-    "tier": "LT2",
-    "status": "active",
-    "points": 20
-  },
-  {
-    "name": "ve58st",
-    "discord": "ve58st",
-    "uuid": "",
-    "tier": "RLT2",
-    "status": "retired",
-    "points": 20
-  },
-  {
-    "name": "r33q",
-    "discord": "mega_kola",
-    "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "roughard",
-    "discord": "lifelessg0d",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
-    "name": "Crow_WellNow",
-    "discord": "den087662",
-    "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "XdeadForDerik",
-    "discord": ".sosidex",
-    "uuid": "",
-    "tier": "LT2",
-    "status": "active",
-    "points": 20
   }
 ]
