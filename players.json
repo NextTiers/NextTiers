@@ -502,5 +502,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "ve58st",
+    "discord": "ve58st",
+    "uuid": "",
+    "tier": "RLT2",
+    "status": "retired",
+    "points": 20
   }
 ]
