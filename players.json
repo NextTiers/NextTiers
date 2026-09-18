@@ -395,9 +395,9 @@
     "name": "yeschapskii",
     "discord": "yeschapskiiy",
     "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "observer.",
