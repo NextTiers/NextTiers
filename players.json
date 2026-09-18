@@ -40,6 +40,14 @@
     "points": 0
   },
   {
+    "name": "blondees",
+    "discord": "blondees",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
     "name": "VeIN273",
     "discord": "shakal00843",
     "uuid": "",
@@ -173,6 +181,14 @@
     "uuid": "",
     "tier": "LT2",
     "status": "active",
+    "points": 20
+  },
+  {
+    "name": "ve58st",
+    "discord": "ve58st",
+    "uuid": "",
+    "tier": "RLT2",
+    "status": "retired",
     "points": 20
   },
   {
@@ -416,7 +432,7 @@
     "points": 10
   },
   {
-    "name": "eblaklak0371",
+    "name": "qwa3nt",
     "discord": "w1ntrikss",
     "uuid": "",
     "tier": "LT3",
@@ -486,21 +502,5 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "blondees",
-    "discord": "blondees",
-    "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "ve58st",
-    "discord": "ve58st",
-    "uuid": "",
-    "tier": "RLT2",
-    "status": "retired",
-    "points": 20
   }
 ]
