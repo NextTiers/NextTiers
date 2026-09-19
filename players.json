@@ -67,9 +67,9 @@
     "name": "VeziiXD",
     "discord": "veziixd",
     "uuid": "",
-    "tier": "LT2",
-    "status": "active",
-    "points": 20
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "MrOreshek",
