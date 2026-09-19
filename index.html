@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NextTiers — Sword Tierlist</title>
+<link rel="preconnect" href="https://crafatar.com" />
+<link rel="preconnect" href="https://mc-heads.net" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #040812;
+    color: #e2e8f0;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(4, 8, 18, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.08);
+  }
+  .navbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .logo-mark {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #081120;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    flex-shrink: 0;
+  }
+  .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+  .logo span { color: #fff; }
+  .logo span em { font-style: normal; color: #38bdf8; }
+
+  .nav-search {
+    flex: 1;
+    max-width: 480px;
+    position: relative;
+  }
+  .nav-search svg {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 16px; height: 16px;
+    stroke: #38bdf8;
+    pointer-events: none;
+  }
+  .nav-search input {
+    width: 100%;
+    padding: 11px 16px 11px 40px;
+    background: rgba(56, 189, 248, 0.03);
+    border: 1px solid rgba(56, 189, 248, 0.12);
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: all .2s ease;
+  }
+  .nav-search input:focus {
+    border-color: rgba(56, 189, 248, 0.6);
+    background: rgba(56, 189, 248, 0.06);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+  }
+  .nav-search input::placeholder { color: #475569; }
+
+  .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+  .nav-btn.discord-btn {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 12px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s ease;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+  }
+  .nav-btn.discord-btn:hover { background: linear-gradient(135deg, #3b82f6, #2563eb); transform: translateY(-1px); }
+  .nav-btn.discord-btn svg { fill: #fff; width: 16px; height: 16px; }
+
+  /* ===== SEARCH RESULTS ===== */
+  .search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0; right: 0;
+    background: #081120;
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 14px;
+    max-height: 340px;
+    overflow-y: auto;
+    z-index: 50;
+    display: none;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+  }
+  .search-results.open { display: block; }
+  .search-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .search-item:hover { background: rgba(56, 189, 248, 0.08); }
+  .search-item img {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    image-rendering: pixelated;
+    background: #0f172a;
+  }
+  .search-item-name { font-weight: 600; font-size: 0.88rem; }
+  .search-item-tier {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+  }
+  .search-item-tier.retired { background: rgba(248, 113, 113, 0.12); color: #f87171; }
+  .search-item-tier.none { background: rgba(100, 116, 139, 0.12); color: #94a3b8; }
+  .search-empty { padding: 20px; text-align: center; color: #64748b; font-size: 0.85rem; }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 60px 20px 45px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -150px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 350px;
+    background: radial-gradient(ellipse, rgba(56, 189, 248, 0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    position: relative;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    position: relative;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    max-width: 700px;
+    margin: 0 auto 14px;
+    background: linear-gradient(180deg, #fff 20%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    position: relative;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .hero-stats {
+    position: relative;
+    display: inline-flex;
+    gap: 28px;
+    padding: 14px 28px;
+    background: rgba(56, 189, 248, 0.02);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+  .hero-stat-num.accent { color: #38bdf8; }
+  .hero-stat-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #64748b; margin-top: 2px; }
+
+  /* ===== BOARD ===== */
+  .board-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px 20px 80px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 40px 0 16px;
+  }
+  .section-header:first-child { margin-top: 0; }
+  .section-header h2 {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    flex-shrink: 0;
+  }
+  .section-header .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), transparent);
+  }
+  .section-header .count {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #38bdf8;
+    padding: 3px 10px;
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 6px;
+  }
+
+  /* ===== TIER ROW ===== */
+  .tier-row {
+    display: flex;
+    margin-bottom: 10px;
+    background: #070e1c;
+    border: 1px solid rgba(56, 189, 248, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .2s ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .tier-row:hover { border-color: rgba(56, 189, 248, 0.25); }
+
+  .tier-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 110px;
+    flex-shrink: 0;
+    padding: 14px 8px;
+    color: #fff;
+  }
+  .tier-label-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.25);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .tier-label-icon svg {
+    width: 16px; height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .tier-label-name { font-size: 0.95rem; font-weight: 900; letter-spacing: 0.5px; }
+  .tier-label-count { font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; opacity: 0.75; }
+
+  .tier-players {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 8px;
+    padding: 10px;
+    align-content: start;
+  }
+
+  /* ===== МОДЕРНИЗИРОВАННЫЕ КАРТОЧКИ ИГРОКОВ (Сине-голубые) ===== */
+  .player-mini {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px 8px 8px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.04), rgba(30, 58, 138, 0.02));
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 0;
+    position: relative;
+  }
+  .player-mini:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(37, 99, 235, 0.06));
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
+  }
+  .player-mini.flash {
+    border-color: rgba(56, 189, 248, 0.9);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+  }
+  .player-mini-head {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    flex-shrink: 0;
+    image-rendering: pixelated;
+  }
+  .player-mini-head img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+  .player-mini-info { min-width: 0; flex: 1; }
+  .player-mini-name {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.2px;
+  }
+  .player-mini-points { font-size: 0.7rem; font-weight: 700; color: #38bdf8; margin-top: 1px; }
+
+  /* ===== TIER COLORS (Градиенты сине-голубой гаммы) ===== */
+  .tier-HT1 .tier-label { background: linear-gradient(135deg, #0284c7, #0369a1); }
+  .tier-LT1 .tier-label { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+  .tier-HT2 .tier-label { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+  .tier-LT2 .tier-label { background: linear-gradient(135deg, #60a5fa, #2563eb); }
+  .tier-HT3 .tier-label { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+  .tier-LT3 .tier-label { background: linear-gradient(135deg, #2563eb, #1e40af); }
+  .tier-HT4 .tier-label { background: linear-gradient(135deg, #1d4ed8, #1e3a8a); }
+  .tier-LT4 .tier-label { background: linear-gradient(135deg, #1e40af, #172554); }
+  .tier-HT5 .tier-label { background: linear-gradient(135deg, #312e81, #1e1b4b); }
+  .tier-LT5 .tier-label { background: linear-gradient(135deg, #1e1b4b, #090d16); }
+  
+  .tier-RHT1 .tier-label, .tier-RLT1 .tier-label { background: linear-gradient(135deg, #475569, #1e293b); }
+  .tier-RHT2 .tier-label, .tier-RLT2 .tier-label { background: linear-gradient(135deg, #334155, #0f172a); }
+  .tier-NONE .tier-label { background: linear-gradient(135deg, #0f172a, #070e1c); color: #64748b; }
+
+  .empty-tier { padding: 14px 18px; color: #475569; font-size: 0.82rem; font-style: italic; }
+  .state-box { text-align: center; padding: 60px 20px; color: #64748b; }
+  .state-box h3 { color: #94a3b8; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 14, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    width: 100%;
+    max-width: 440px;
+    background: #081120;
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
+    transform: scale(0.95) translateY(10px);
+    transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: background .2s ease;
+    z-index: 2;
+  }
+  .modal-close:hover { background: rgba(56, 189, 248, 0.15); }
+  .modal-close svg { stroke: #38bdf8; width: 14px; height: 14px; }
+
+  .modal-header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+  .modal-head {
+    width: 76px; height: 76px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0f172a;
+    border: 2px solid rgba(56, 189, 248, 0.5);
+    flex-shrink: 0;
+    image-rendering: pixelated;
+  }
+  .modal-head img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+  .modal-name { font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+  .modal-discord { color: #64748b; font-size: 0.85rem; margin-top: 3px; }
+
+  .modal-tier-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(56, 189, 248, 0.02);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+  .modal-tier-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .modal-tier-info { flex: 1; min-width: 0; }
+  .modal-tier-label-text { font-size: 0.62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 2px; }
+  .modal-tier-value { font-size: 1.4rem; font-weight: 900; color: #fff; }
+
+  .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .modal-cell {
+    padding: 14px 16px;
+    background: rgba(56, 189, 248, 0.02);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 14px;
+  }
+  .modal-cell-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
+  .modal-cell-value { font-size: 1.3rem; font-weight: 900; color: #38bdf8; }
+  .modal-cell-value small { font-size: 0.7rem; color: #64748b; margin-left: 2px; }
+  .status-badge {
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    display: inline-block;
+    border-radius: 8px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .status-active { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.25); }
+  .status-retired { background: rgba(248, 113, 113, 0.12); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.25); }
+  .status-none { background: rgba(100, 116, 139, 0.12); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.25); }
+
+  @media (max-width: 720px) {
+    .navbar-inner { flex-wrap: wrap; height: auto; padding: 12px 16px; gap: 10px; }
+    .nav-search { order: 3; width: 100%; }
+    .tier-row { flex-direction: column; }
+    .tier-label { width: 100%; flex-direction: row; justify-content: flex-start; padding: 10px 14px; gap: 10px; }
+    .tier-label-count { margin-left: auto; }
+    .tier-players { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 420px) {
+    .tier-players { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <img src="logo.png" alt="NextTiers Logo" onerror="this.style.display='none'" />
+      </div>
+      <span>Next<em>Tiers</em></span>
+    </a>
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="navSearch" placeholder="Поиск игрока по нику..." autocomplete="off" />
+      <div class="search-results" id="navSearchResults"></div>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-btn discord-btn" href="https://discord.gg/uvd9PgCmMX" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Discord
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">Sword · Tierlist</div>
+  <h1>Официальный тирлист<br/>Minecraft Sword PvP</h1>
+  <p>Проходи тесты, получай тиры и докажи своё превосходство в ките Sword</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="statTotal">—</div>
+      <div class="hero-stat-label">Игроков</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num accent" id="statActive">—</div>
+      <div class="hero-stat-label">Активных</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="statRetired">—</div>
+      <div class="hero-stat-label">Retired</div>
+    </div>
+  </div>
+</section>
+
+<div class="board-wrap">
+  <div id="boardList"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<script>
+const DATA_URL = 'players.json';
+const AUTO_REFRESH_MS = 60000;
+
+const TIER_POINTS = {
+  HT1: 60, LT1: 45, HT2: 30, LT2: 20,
+  HT3: 10, LT3: 6, HT4: 4, LT4: 3, HT5: 2, LT5: 1
+};
+const TIER_ORDER = ["HT1","LT1","HT2","LT2","HT3","LT3","HT4","LT4","HT5","LT5"];
+const RETIRED_ORDER = ["RHT1","RLT1","RHT2","RLT2"];
+
+let PLAYERS = [];
+let loadedOnce = false;
+
+function skinUrl(p, size) {
+  const uuid = (p.uuid && String(p.uuid).trim()) || "";
+  if (uuid) return `https://crafatar.com/avatars/${encodeURIComponent(uuid)}?size=${size}&overlay`;
+  return `https://mc-heads.net/avatar/${encodeURIComponent(p.name)}/${size}`;
+}
+
+function handleSkinError(img, p, size) {
+  img.onerror = null;
+  const uuid = (p.uuid && String(p.uuid).trim()) || "";
+  img.src = uuid ? `https://mc-heads.net/avatar/${encodeURIComponent(uuid)}/${size}` : `https://mc-heads.net/avatar/${encodeURIComponent(p.name)}/${size}`;
+}
+
+function tierClass(t) { return "tier-" + String(t || "NONE").toUpperCase(); }
+function isRetired(t) { return t && String(t).startsWith("R"); }
+function pointsForTier(t) {
+  if (!t) return 0;
+  const normal = isRetired(t) ? String(t).substring(1) : t;
+  return TIER_POINTS[normal] || 0;
+}
+
+const SWORD_SVG = `<svg viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5zM13 19l6-6M16 16l4 4M19 21l2-2"/></svg>`;
+const HELP_SVG = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+
+async function loadPlayers() {
+  try {
+    const resp = await fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" });
+    if (!resp.ok) throw new Error("HTTP " + resp.status);
+    const data = await resp.json();
+    if (!Array.isArray(data)) throw new Error("Не массив");
+
+    const changed = JSON.stringify(data) !== JSON.stringify(PLAYERS);
+    PLAYERS = data;
+    loadedOnce = true;
+
+    updateStats();
+    if (changed) renderBoard();
+  } catch (e) {
+    if (!loadedOnce) {
+      const list = document.getElementById("boardList");
+      if (list) list.innerHTML = `<div class="state-box"><h3>Не удалось загрузить данные</h3><p>Файл players.json не найден или пуст.</p></div>`;
+    }
+  }
+}
+
+function updateStats() {
+  document.getElementById("statTotal").textContent = PLAYERS.length;
+  document.getElementById("statActive").textContent = PLAYERS.filter(p => p.tier && !isRetired(p.tier)).length;
+  document.getElementById("statRetired").textContent = PLAYERS.filter(p => p.tier && isRetired(p.tier)).length;
+}
+
+function buildPlayerMini(p) {
+  const el = document.createElement("div");
+  el.className = "player-mini";
+  el.dataset.playerName = p.name;
+
+  const head = document.createElement("div");
+  head.className = "player-mini-head";
+  const img = document.createElement("img");
+  img.alt = p.name;
+  img.loading = "lazy";
+  img.src = skinUrl(p, 64);
+  img.onerror = function () { handleSkinError(this, p, 64); };
+  head.appendChild(img);
+
+  const info = document.createElement("div");
+  info.className = "player-mini-info";
+  const name = document.createElement("div");
+  name.className = "player-mini-name";
+  name.textContent = p.name;
+  const pts = document.createElement("div");
+  pts.className = "player-mini-points";
+  pts.textContent = (p.points != null ? p.points : pointsForTier(p.tier)) + " pts";
+
+  info.appendChild(name);
+  info.appendChild(pts);
+  el.appendChild(head);
+  el.appendChild(info);
+  el.addEventListener("click", () => openModal(p));
+  return el;
+}
+
+function buildTierRow(tier, players) {
+  const row = document.createElement("div");
+  row.className = "tier-row " + tierClass(tier);
+
+  const label = document.createElement("div");
+  label.className = "tier-label";
+  const icon = document.createElement("div");
+  icon.className = "tier-label-icon";
+  icon.innerHTML = tier ? SWORD_SVG : HELP_SVG;
+  label.appendChild(icon);
+
+  const name = document.createElement("div");
+  name.className = "tier-label-name";
+  name.textContent = tier || "NONE";
+  label.appendChild(name);
+
+  const cnt = document.createElement("div");
+  cnt.className = "tier-label-count";
+  cnt.textContent = players.length;
+  label.appendChild(cnt);
+
+  const wrap = document.createElement("div");
+  wrap.className = "tier-players";
+
+  if (!players.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-tier";
+    empty.textContent = "Пусто";
+    wrap.appendChild(empty);
+  } else {
+    players.forEach(p => wrap.appendChild(buildPlayerMini(p)));
+  }
+
+  row.appendChild(label);
+  row.appendChild(wrap);
+  return row;
+}
+
+function makeSectionHeader(text, count) {
+  const h = document.createElement("div");
+  h.className = "section-header";
+  h.innerHTML = `<h2>${text}</h2><div class="line"></div><div class="count">${count}</div>`;
+  return h;
+}
+
+function renderBoard() {
+  const list = document.getElementById("boardList");
+  if (!list) return;
+  list.innerHTML = "";
+
+  const active = PLAYERS.filter(p => p.tier && !isRetired(p.tier));
+  const retired = PLAYERS.filter(p => p.tier && isRetired(p.tier));
+  const noTier = PLAYERS.filter(p => !p.tier);
+
+  if (active.length) {
+    list.appendChild(makeSectionHeader("Активные тиры", active.length));
+    TIER_ORDER.forEach(tier => {
+      const players = active.filter(p => p.tier === tier).sort((a, b) => (b.points || 0) - (a.points || 0));
+      if (players.length) list.appendChild(buildTierRow(tier, players));
+    });
+  }
+
+  if (retired.length) {
+    list.appendChild(makeSectionHeader("Retired", retired.length));
+    RETIRED_ORDER.forEach(tier => {
+      const players = retired.filter(p => p.tier === tier).sort((a, b) => (b.points || 0) - (a.points || 0));
+      if (players.length) list.appendChild(buildTierRow(tier, players));
+    });
+  }
+
+  if (noTier.length) {
+    list.appendChild(makeSectionHeader("Без тира", noTier.length));
+    noTier.sort((a, b) => a.name.localeCompare(b.name));
+    list.appendChild(buildTierRow(null, noTier));
+  }
+}
+
+const modalOverlay = document.getElementById("modalOverlay");
+const modalBox = document.getElementById("modalBox");
+
+function openModal(p) {
+  const points = (p.points != null ? p.points : pointsForTier(p.tier));
+  const isRet = isRetired(p.tier);
+  const tierKey = p.tier ? String(p.tier).toUpperCase() : "NONE";
+  const statusLabel = isRet ? "Retired" : (p.tier ? "Активный" : "Без тира");
+  const statusClass = isRet ? "status-retired" : (p.tier ? "status-active" : "status-none");
+
+  modalBox.innerHTML = `
+    <button class="modal-close" onclick="closeModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-header">
+      <div class="modal-head"><img alt="${p.name}" src="${skinUrl(p, 160)}" onerror="handleSkinError(this, '${p.name}', 160)"></div>
+      <div>
+        <div class="modal-name">${p.name}</div>
+        <div class="modal-discord">@${p.discord || p.name}</div>
+      </div>
+    </div>
+    <div class="modal-tier-box">
+      <div class="modal-tier-icon tier-${tierKey}"><div class="tier-label-icon">${p.tier ? SWORD_SVG : HELP_SVG}</div></div>
+      <div class="modal-tier-info">
+        <div class="modal-tier-label-text">Тир Sword</div>
+        <div class="modal-tier-value">${p.tier || 'Не назначен'}</div>
+      </div>
+    </div>
+    <div class="modal-grid">
+      <div class="modal-cell">
+        <div class="modal-cell-label">Очки</div>
+        <div class="modal-cell-value">${points}<small>pts</small></div>
+      </div>
+      <div class="modal-cell">
+        <div class="modal-cell-label">Статус</div>
+        <div style="margin-top: 4px;"><span class="status-badge ${statusClass}">${statusLabel}</span></div>
+      </div>
+    </div>
+  `;
+  modalOverlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modalOverlay.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+const navSearch = document.getElementById("navSearch");
+const navResults = document.getElementById("navSearchResults");
+
+navSearch.addEventListener("input", () => {
+  const q = navSearch.value.trim().toLowerCase();
+  if (!q) { navResults.classList.remove("open"); return; }
+  const matches = PLAYERS.filter(p => p.name.toLowerCase().includes(q)).slice(0, 7);
+  navResults.innerHTML = "";
+  if (!matches.length) {
+    navResults.innerHTML = `<div class="search-empty">Игрок не найден</div>`;
+    navResults.classList.add("open");
+    return;
+  }
+  matches.forEach(p => {
+    const item = document.createElement("div");
+    item.className = "search-item";
+    item.innerHTML = `<img src="${skinUrl(p, 64)}" alt=""><div class="search-item-name">${p.name}</div><div class="search-item-tier">${p.tier || 'NONE'}</div>`;
+    item.addEventListener("click", () => {
+      navSearch.value = "";
+      navResults.classList.remove("open");
+      const el = document.querySelector(`[data-player-name="${CSS.escape(p.name)}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.classList.add("flash");
+        setTimeout(() => el.classList.remove("flash"), 2000);
+      }
+    });
+    navResults.appendChild(item);
+  });
+  navResults.classList.add("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!navSearch.contains(e.target) && !navResults.contains(e.target)) navResults.classList.remove("open");
+});
+
+(async function init() {
+  await loadPlayers();
+  renderBoard();
+  setInterval(loadPlayers, AUTO_REFRESH_MS);
+})();
+</script>
+</body>
+</html>
