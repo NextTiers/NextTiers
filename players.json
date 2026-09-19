@@ -123,9 +123,9 @@
     "name": "iwtrope",
     "discord": ".sshwecia",
     "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "k0dieswii",
@@ -379,9 +379,9 @@
     "name": "yeschapskii",
     "discord": "yeschapskiiy",
     "uuid": "",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "HT2",
+    "status": "active",
+    "points": 30
   },
   {
     "name": "observer.",
