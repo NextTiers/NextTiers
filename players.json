@@ -1,5 +1,21 @@
 [
   {
+    "name": "Incvezy_WW",
+    "discord": "incvezy_ww",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
+    "name": "badvaseline",
+    "discord": "braindms",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
     "name": "nextcis",
     "discord": "styleeslol",
     "uuid": "",
@@ -107,14 +123,6 @@
     "name": "Svetlogor",
     "discord": "kulmikrovalnovka",
     "uuid": "7c980cdbe6574346b12bb416d7888f21",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
-    "name": "Incvezy_WW",
-    "discord": "incvezy_ww",
-    "uuid": "",
     "tier": "HT3",
     "status": "active",
     "points": 10
@@ -434,14 +442,6 @@
   {
     "name": "ебал вас",
     "discord": "lifelessg0d",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
-    "name": "badvaseline",
-    "discord": "braindms",
     "uuid": "",
     "tier": "HT3",
     "status": "active",
