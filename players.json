@@ -435,9 +435,9 @@
     "name": "ебал вас",
     "discord": "lifelessg0d",
     "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "badvaseline",
