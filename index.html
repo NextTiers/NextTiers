@@ -21,11 +21,11 @@
     --muted: #8a97ad;
     --accent: #4da3ff;
 
-    --t1: #ffd05a;  --t1b: #ff9f1c;
-    --t2: #b9c6d8;  --t2b: #7d8ca3;
-    --t3: #ff8f5e;  --t3b: #e05f34;
-    --t4: #5fd0a6;  --t4b: #21916d;
-    --t5: #7aa7ff;  --t5b: #3f63c9;
+    --t1: #7ff0ff;  --t1b: #12a7ff;
+    --t2: #6ac8ff;  --t2b: #2a7ae8;
+    --t3: #5aa6ff;  --t3b: #2b57d6;
+    --t4: #6f93f0;  --t4b: #2f3fae;
+    --t5: #8aa0d6;  --t5b: #3b4a86;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +34,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background:
       radial-gradient(1200px 600px at 50% -200px, rgba(77, 163, 255, 0.10), transparent 70%),
-      radial-gradient(800px 400px at 85% 10%, rgba(255, 159, 28, 0.05), transparent 70%),
+      radial-gradient(800px 400px at 85% 10%, rgba(18, 167, 255, 0.07), transparent 70%),
       var(--bg);
     background-attachment: fixed;
     color: var(--text);
@@ -81,7 +81,7 @@
   }
   .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
   .logo span { color: #fff; }
-  .logo span em { font-style: normal; background: linear-gradient(135deg, #ffd05a, #ff9f1c); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .logo span em { font-style: normal; background: linear-gradient(135deg, #7ff0ff, #12a7ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
   .nav-search { flex: 1; max-width: 460px; position: relative; }
   .nav-search svg {
@@ -178,14 +178,14 @@
   .hero-label {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.66rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase;
-    color: #ffd05a;
+    color: #7ff0ff;
     padding: 6px 14px;
-    border: 1px solid rgba(255, 208, 90, 0.22);
-    background: rgba(255, 208, 90, 0.06);
+    border: 1px solid rgba(127, 240, 255, 0.22);
+    background: rgba(127, 240, 255, 0.06);
     border-radius: 999px;
     margin-bottom: 18px;
   }
-  .hero-label svg { width: 13px; height: 13px; stroke: #ffd05a; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .hero-label svg { width: 13px; height: 13px; stroke: #7ff0ff; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
   .hero h1 {
     font-size: clamp(2.1rem, 5.4vw, 3.4rem);
     font-weight: 900;
@@ -214,7 +214,7 @@
     box-shadow: 0 12px 30px rgba(0,0,0,0.35);
   }
   .hero-stat-num { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: -0.6px; }
-  .hero-stat-num.accent { background: linear-gradient(135deg, #ffd05a, #ff9f1c); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-stat-num.accent { background: linear-gradient(135deg, #7ff0ff, #12a7ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .hero-stat-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: #5f6c82; margin-top: 2px; }
 
   /* ===== VIEW SWITCH ===== */
@@ -244,8 +244,8 @@
   .switch button:hover { color: #cfdcf2; }
   .switch button.active {
     color: #08101f;
-    background: linear-gradient(135deg, #ffd05a, #ff9f1c);
-    box-shadow: 0 6px 18px rgba(255, 159, 28, 0.25);
+    background: linear-gradient(135deg, #7ff0ff, #12a7ff);
+    box-shadow: 0 6px 18px rgba(18, 167, 255, 0.3);
   }
 
   /* ===== BOARD ===== */
@@ -291,16 +291,17 @@
     background: linear-gradient(180deg, rgba(255,255,255,0.035), transparent);
   }
   .tier-col-badge {
-    width: 34px; height: 34px;
+    width: 36px; height: 36px;
     border-radius: 10px;
     display: grid;
     place-items: center;
     flex-shrink: 0;
-    background: linear-gradient(135deg, var(--c1), var(--c2));
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.10), rgba(8,13,24,0.9));
+    border: 1px solid var(--c1);
     color: #0a0f19;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45), inset 0 0 14px color-mix(in srgb, var(--c1) 22%, transparent);
   }
-  .tier-col-badge svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .tier-col-badge svg { width: 24px; height: 24px; image-rendering: pixelated; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6)); }
   .tier-col-title { font-size: 0.92rem; font-weight: 900; letter-spacing: .3px; color: #fff; line-height: 1.15; }
   .tier-col-sub { font-size: 0.6rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: #5f6c82; }
   .tier-col-count {
@@ -361,14 +362,15 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   }
   .player-mini:hover::before { opacity: 1; }
-  .player-mini.flash {
-    border-color: rgba(255, 208, 90, 0.85);
-    box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.18);
+  .player-mini.flash, .rank-row.flash {
+    border-color: rgba(127, 240, 255, 0.85);
+    box-shadow: 0 0 0 3px rgba(127, 240, 255, 0.2);
     animation: flashPulse 1s ease-in-out 2;
   }
+  .rank-row.flash { background: rgba(127, 240, 255, 0.08); }
   @keyframes flashPulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.18); }
-    50% { box-shadow: 0 0 0 7px rgba(255, 208, 90, 0.05); }
+    0%, 100% { box-shadow: 0 0 0 3px rgba(127, 240, 255, 0.2); }
+    50% { box-shadow: 0 0 0 7px rgba(127, 240, 255, 0.05); }
   }
   .player-rank {
     width: 20px;
@@ -405,14 +407,14 @@
   .player-mini-points { font-size: 0.66rem; font-weight: 700; color: #5f6c82; margin-top: 1px; letter-spacing: .3px; }
   .player-mini-tag {
     flex-shrink: 0;
-    font-size: 0.6rem;
-    font-weight: 900;
-    letter-spacing: .6px;
-    padding: 3px 7px;
-    border-radius: 6px;
-    color: #0a0f19;
+    display: grid;
+    place-items: center;
+    width: 22px; height: 22px;
+    border-radius: 7px;
+    color: #08101d;
     background: linear-gradient(135deg, var(--c1), var(--c2));
   }
+  .player-mini-tag svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
   .player-mini-tag.low { color: var(--c1); background: rgba(255,255,255,0.05); border: 1px solid var(--line-strong); }
 
   /* ===== SECTION HEADER ===== */
@@ -470,11 +472,13 @@
   .rank-discord { font-size: 0.68rem; color: #5f6c82; }
   .rank-tier {
     justify-self: start;
+    display: inline-flex; align-items: center; gap: 5px;
     font-size: 0.7rem; font-weight: 900; letter-spacing: .6px;
     padding: 5px 11px; border-radius: 999px;
     color: #0a0f19;
     background: linear-gradient(135deg, var(--c1, #7b8698), var(--c2, #3c4657));
   }
+  .rank-tier svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
   .rank-tier.dim { color: var(--c1, #b9c6d8); background: rgba(255,255,255,0.05); border: 1px solid var(--line-strong); }
   .rank-points { text-align: right; font-weight: 900; font-size: 0.95rem; color: #fff; font-variant-numeric: tabular-nums; }
   .rank-points small { font-size: 0.65rem; color: #5f6c82; font-weight: 700; margin-left: 3px; }
@@ -729,6 +733,27 @@ function isHighTier(t) { return /^R?HT/.test(String(t || "")); }
 function playerPoints(p) { return (p.points != null ? p.points : pointsForTier(p.tier)); }
 
 const SWORD_SVG = `<svg viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5zM13 19l6-6M16 16l4 4M19 21l2-2"/></svg>`;
+const ARROW_UP_SVG = `<svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>`;
+const ARROW_DOWN_SVG = `<svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>`;
+const DIAMOND_SWORD_SVG = (function () {
+  const px = (x, y, w, h, c) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`;
+  let blade = "";
+  for (let i = 0; i < 9; i++) {
+    blade += px(5 + i, 10 - i, 2, 2, "#3fd6cd");
+    blade += px(5 + i, 9 - i, 1, 1, "#a8fbff");
+  }
+  return `<svg viewBox="0 0 16 16" shape-rendering="crispEdges">` +
+    px(1, 13, 3, 2, "#3b2a1d") + px(2, 12, 2, 2, "#6b4a2b") + px(2, 13, 1, 1, "#8a5a2b") +
+    px(3, 9, 2, 2, "#c6ccdb") + px(4, 10, 2, 2, "#9aa2b5") +
+    px(6, 12, 2, 2, "#9aa2b5") + px(7, 13, 2, 2, "#c6ccdb") +
+    blade + px(14, 1, 1, 2, "#a8fbff") + px(13, 1, 1, 1, "#3fd6cd") +
+    `</svg>`;
+})();
+function tierArrow(t) { return isHighTier(t) ? ARROW_UP_SVG : ARROW_DOWN_SVG; }
+function tierShort(t) {
+  const s = String(t || "");
+  return (isRetired(s) ? "R" : "") + (tierNumber(s) || "");
+}
 const HELP_SVG = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
 
 async function loadPlayers() {
@@ -799,7 +824,8 @@ function buildPlayerMini(p, rank) {
   if (p.tier) {
     const tag = document.createElement("div");
     tag.className = "player-mini-tag" + (isHighTier(p.tier) ? "" : " low");
-    tag.textContent = String(p.tier).replace(/\d$/, "");
+    tag.title = String(p.tier);
+    tag.innerHTML = tierArrow(p.tier);
     el.appendChild(tag);
   }
 
@@ -815,7 +841,7 @@ function buildTierColumn(num, highPlayers, lowPlayers, opts) {
   const head = document.createElement("div");
   head.className = "tier-col-head";
   head.innerHTML = `
-    <div class="tier-col-badge">${o.icon || SWORD_SVG}</div>
+    <div class="tier-col-badge">${o.icon || DIAMOND_SWORD_SVG}</div>
     <div>
       <div class="tier-col-title">${o.title || ("Tier " + num)}</div>
       <div class="tier-col-sub">${o.subtitle || "Sword"}</div>
@@ -880,7 +906,7 @@ function buildRankRow(p, pos) {
         <div class="rank-discord"></div>
       </div>
     </div>
-    <div class="rank-tier${isHighTier(p.tier) ? "" : " dim"}">${p.tier || "NONE"}</div>
+    <div class="rank-tier${isHighTier(p.tier) ? "" : " dim"}" title="${p.tier || "NONE"}">${p.tier ? tierArrow(p.tier) + tierShort(p.tier) : "NONE"}</div>
     <div class="rank-points">${playerPoints(p)}<small>pts</small></div>
   `;
   row.querySelector(".rank-name").textContent = p.name;
