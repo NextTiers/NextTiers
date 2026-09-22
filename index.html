@@ -10,12 +10,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
+  :root {
+    --bg: #07090f;
+    --bg-soft: #0c111b;
+    --panel: #0e1422;
+    --panel-2: #111a2b;
+    --line: rgba(148, 178, 255, 0.10);
+    --line-strong: rgba(148, 178, 255, 0.22);
+    --text: #e6edf7;
+    --muted: #8a97ad;
+    --accent: #4da3ff;
+
+    --t1: #ffd05a;  --t1b: #ff9f1c;
+    --t2: #b9c6d8;  --t2b: #7d8ca3;
+    --t3: #ff8f5e;  --t3b: #e05f34;
+    --t4: #5fd0a6;  --t4b: #21916d;
+    --t5: #7aa7ff;  --t5b: #3f63c9;
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #040812;
-    color: #e2e8f0;
+    background:
+      radial-gradient(1200px 600px at 50% -200px, rgba(77, 163, 255, 0.10), transparent 70%),
+      radial-gradient(800px 400px at 85% 10%, rgba(255, 159, 28, 0.05), transparent 70%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
     line-height: 1.5;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -23,98 +45,89 @@
   }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(148, 178, 255, 0.16); border-radius: 20px; border: 3px solid transparent; background-clip: content-box; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(148, 178, 255, 0.3); background-clip: content-box; }
 
   /* ===== NAVBAR ===== */
   .navbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(4, 8, 18, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.08);
+    background: rgba(7, 9, 15, 0.82);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid var(--line);
   }
   .navbar-inner {
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
-    height: 70px;
+    padding: 0 22px;
+    height: 68px;
     display: flex;
     align-items: center;
     gap: 20px;
   }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 900;
-    font-size: 1.15rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.1rem; letter-spacing: 1.2px; text-transform: uppercase; flex-shrink: 0; }
   .logo-mark {
-    width: 44px; height: 44px;
-    border-radius: 12px;
+    width: 40px; height: 40px;
+    border-radius: 11px;
     overflow: hidden;
-    background: #081120;
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    background: #0a1120;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 0 22px rgba(77, 163, 255, 0.18);
     flex-shrink: 0;
   }
   .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
   .logo span { color: #fff; }
-  .logo span em { font-style: normal; color: #38bdf8; }
+  .logo span em { font-style: normal; background: linear-gradient(135deg, #ffd05a, #ff9f1c); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
-  .nav-search {
-    flex: 1;
-    max-width: 480px;
-    position: relative;
-  }
+  .nav-search { flex: 1; max-width: 460px; position: relative; }
   .nav-search svg {
     position: absolute;
     left: 14px; top: 50%;
     transform: translateY(-50%);
     width: 16px; height: 16px;
-    stroke: #38bdf8;
+    stroke: var(--muted);
     pointer-events: none;
   }
   .nav-search input {
     width: 100%;
-    padding: 11px 16px 11px 40px;
-    background: rgba(56, 189, 248, 0.03);
-    border: 1px solid rgba(56, 189, 248, 0.12);
-    border-radius: 12px;
-    color: #e2e8f0;
-    font-size: 0.9rem;
+    padding: 10px 16px 10px 40px;
+    background: rgba(148, 178, 255, 0.04);
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    color: var(--text);
+    font-size: 0.88rem;
     font-family: inherit;
     outline: none;
-    transition: all .2s ease;
+    transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
   }
   .nav-search input:focus {
-    border-color: rgba(56, 189, 248, 0.6);
-    background: rgba(56, 189, 248, 0.06);
-    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+    border-color: rgba(77, 163, 255, 0.55);
+    background: rgba(77, 163, 255, 0.07);
+    box-shadow: 0 0 0 4px rgba(77, 163, 255, 0.10);
   }
-  .nav-search input::placeholder { color: #475569; }
+  .nav-search input::placeholder { color: #55617a; }
 
   .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
   .nav-btn.discord-btn {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    border-radius: 12px;
+    background: linear-gradient(135deg, #5865f2, #4149d6);
+    border-radius: 11px;
     height: 40px;
     display: flex;
     align-items: center;
-    padding: 0 18px;
+    padding: 0 16px;
     gap: 8px;
-    font-size: 0.88rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 800;
     color: #fff;
     cursor: pointer;
-    transition: all .2s ease;
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    box-shadow: 0 6px 18px rgba(88, 101, 242, 0.32);
   }
-  .nav-btn.discord-btn:hover { background: linear-gradient(135deg, #3b82f6, #2563eb); transform: translateY(-1px); }
+  .nav-btn.discord-btn:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(88, 101, 242, 0.42); }
   .nav-btn.discord-btn svg { fill: #fff; width: 16px; height: 16px; }
 
   /* ===== SEARCH RESULTS ===== */
@@ -122,267 +135,361 @@
     position: absolute;
     top: calc(100% + 8px);
     left: 0; right: 0;
-    background: #081120;
-    border: 1px solid rgba(56, 189, 248, 0.15);
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
     border-radius: 14px;
-    max-height: 340px;
+    max-height: 360px;
     overflow-y: auto;
     z-index: 50;
     display: none;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
+    padding: 6px;
   }
   .search-results.open { display: block; }
   .search-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 14px;
+    padding: 9px 10px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background .15s ease;
+    transition: background .14s ease;
   }
-  .search-item:hover { background: rgba(56, 189, 248, 0.08); }
-  .search-item img {
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    image-rendering: pixelated;
-    background: #0f172a;
-  }
-  .search-item-name { font-weight: 600; font-size: 0.88rem; }
+  .search-item:hover { background: rgba(148, 178, 255, 0.08); }
+  .search-item img { width: 30px; height: 30px; border-radius: 7px; image-rendering: pixelated; background: #0f172a; }
+  .search-item-name { font-weight: 700; font-size: 0.87rem; }
   .search-item-tier {
     margin-left: auto;
-    font-size: 0.7rem;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: .6px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(77, 163, 255, 0.14);
+    color: #7cc0ff;
+    border: 1px solid rgba(77, 163, 255, 0.22);
   }
-  .search-item-tier.retired { background: rgba(248, 113, 113, 0.12); color: #f87171; }
-  .search-item-tier.none { background: rgba(100, 116, 139, 0.12); color: #94a3b8; }
-  .search-empty { padding: 20px; text-align: center; color: #64748b; font-size: 0.85rem; }
+  .search-item-tier.retired { background: rgba(248, 113, 113, 0.12); color: #f87171; border-color: rgba(248, 113, 113, 0.25); }
+  .search-item-tier.none { background: rgba(138, 151, 173, 0.12); color: var(--muted); border-color: rgba(138, 151, 173, 0.2); }
+  .search-empty { padding: 20px; text-align: center; color: #5b667c; font-size: 0.85rem; }
 
   /* ===== HERO ===== */
-  .hero {
-    padding: 60px 20px 45px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -150px; left: 50%;
-    transform: translateX(-50%);
-    width: 700px; height: 350px;
-    background: radial-gradient(ellipse, rgba(56, 189, 248, 0.12), transparent 70%);
-    pointer-events: none;
-  }
+  .hero { padding: 54px 22px 26px; text-align: center; position: relative; }
   .hero-label {
-    position: relative;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #38bdf8;
-    margin-bottom: 16px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.66rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase;
+    color: #ffd05a;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 208, 90, 0.22);
+    background: rgba(255, 208, 90, 0.06);
+    border-radius: 999px;
+    margin-bottom: 18px;
   }
+  .hero-label svg { width: 13px; height: 13px; stroke: #ffd05a; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
   .hero h1 {
-    position: relative;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-size: clamp(2.1rem, 5.4vw, 3.4rem);
     font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    max-width: 700px;
+    line-height: 1.08;
+    letter-spacing: -1.4px;
+    max-width: 760px;
     margin: 0 auto 14px;
-    background: linear-gradient(180deg, #fff 20%, #93c5fd 100%);
+    background: linear-gradient(180deg, #ffffff 15%, #9db9e8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .hero p {
-    position: relative;
-    color: #94a3b8;
-    font-size: 0.95rem;
-    max-width: 480px;
-    margin: 0 auto 28px;
-  }
+  .hero p { color: var(--muted); font-size: 0.94rem; max-width: 520px; margin: 0 auto 26px; }
   .hero-stats {
-    position: relative;
     display: inline-flex;
-    gap: 28px;
-    padding: 14px 28px;
-    background: rgba(56, 189, 248, 0.02);
-    border: 1px solid rgba(56, 189, 248, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .hero-stat { text-align: center; }
-  .hero-stat-num { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-  .hero-stat-num.accent { color: #38bdf8; }
-  .hero-stat-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #64748b; margin-top: 2px; }
+  .hero-stat {
+    min-width: 132px;
+    padding: 12px 22px;
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  }
+  .hero-stat-num { font-size: 1.5rem; font-weight: 900; color: #fff; letter-spacing: -0.6px; }
+  .hero-stat-num.accent { background: linear-gradient(135deg, #ffd05a, #ff9f1c); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-stat-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: #5f6c82; margin-top: 2px; }
+
+  /* ===== VIEW SWITCH ===== */
+  .switch-wrap { display: flex; justify-content: center; padding: 8px 20px 4px; }
+  .switch {
+    display: inline-flex;
+    padding: 5px;
+    gap: 4px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .switch button {
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    padding: 9px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .18s ease, background .18s ease;
+  }
+  .switch button:hover { color: #cfdcf2; }
+  .switch button.active {
+    color: #08101f;
+    background: linear-gradient(135deg, #ffd05a, #ff9f1c);
+    box-shadow: 0 6px 18px rgba(255, 159, 28, 0.25);
+  }
 
   /* ===== BOARD ===== */
-  .board-wrap {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 10px 20px 80px;
+  .board-wrap { max-width: 1400px; margin: 0 auto; padding: 18px 22px 90px; }
+
+  .tier-columns {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
   }
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin: 40px 0 16px;
-  }
-  .section-header:first-child { margin-top: 0; }
-  .section-header h2 {
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #38bdf8;
-    flex-shrink: 0;
-  }
-  .section-header .line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), transparent);
-  }
-  .section-header .count {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: #38bdf8;
-    padding: 3px 10px;
-    background: rgba(56, 189, 248, 0.05);
-    border: 1px solid rgba(56, 189, 248, 0.15);
-    border-radius: 6px;
-  }
-
-  /* ===== TIER ROW ===== */
-  .tier-row {
-    display: flex;
-    margin-bottom: 10px;
-    background: #070e1c;
-    border: 1px solid rgba(56, 189, 248, 0.08);
-    border-radius: 14px;
+  .tier-col {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 16px;
     overflow: hidden;
-    transition: border-color .2s ease;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    position: relative;
   }
-  .tier-row:hover { border-color: rgba(56, 189, 248, 0.25); }
+  .tier-col::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c1), var(--c2));
+  }
+  /* ===== TIER TONES ===== */
+  .t1, .tier-HT1, .tier-LT1 { --c1: var(--t1); --c2: var(--t1b); }
+  .t2, .tier-HT2, .tier-LT2 { --c1: var(--t2); --c2: var(--t2b); }
+  .t3, .tier-HT3, .tier-LT3 { --c1: var(--t3); --c2: var(--t3b); }
+  .t4, .tier-HT4, .tier-LT4 { --c1: var(--t4); --c2: var(--t4b); }
+  .t5, .tier-HT5, .tier-LT5 { --c1: var(--t5); --c2: var(--t5b); }
+  .retired, .tier-RHT1, .tier-RLT1, .tier-RHT2, .tier-RLT2 { --c1: #9aa6b8; --c2: #46516380; }
+  .none, .tier-NONE { --c1: #64748b; --c2: #2b3444; }
 
-  .tier-label {
+  .tier-col-head {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 110px;
-    flex-shrink: 0;
-    padding: 14px 8px;
-    color: #fff;
+    gap: 10px;
+    padding: 16px 14px 13px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.035), transparent);
   }
-  .tier-label-icon {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.25);
+  .tier-col-badge {
+    width: 34px; height: 34px;
+    border-radius: 10px;
     display: grid;
     place-items: center;
     flex-shrink: 0;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    color: #0a0f19;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
   }
-  .tier-label-icon svg {
-    width: 16px; height: 16px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  .tier-col-badge svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .tier-col-title { font-size: 0.92rem; font-weight: 900; letter-spacing: .3px; color: #fff; line-height: 1.15; }
+  .tier-col-sub { font-size: 0.6rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: #5f6c82; }
+  .tier-col-count {
+    margin-left: auto;
+    font-size: 0.68rem;
+    font-weight: 900;
+    color: var(--c1);
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
   }
-  .tier-label-name { font-size: 0.95rem; font-weight: 900; letter-spacing: 0.5px; }
-  .tier-label-count { font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; opacity: 0.75; }
 
-  .tier-players {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  .tier-col-body { padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+
+  .subtier-label {
+    display: flex;
+    align-items: center;
     gap: 8px;
-    padding: 10px;
-    align-content: start;
+    padding: 8px 6px 4px;
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #5f6c82;
   }
+  .subtier-label .dot { width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg, var(--c1), var(--c2)); flex-shrink: 0; }
+  .subtier-label .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line-strong), transparent); }
 
-  /* ===== МОДЕРНИЗИРОВАННЫЕ КАРТОЧКИ ИГРОКОВ (Сине-голубые) ===== */
+  /* ===== PLAYER ROW ===== */
   .player-mini {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px 12px 8px 8px;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.04), rgba(30, 58, 138, 0.02));
-    border: 1px solid rgba(56, 189, 248, 0.1);
-    border-radius: 12px;
+    gap: 10px;
+    padding: 7px 10px 7px 7px;
+    background: rgba(148, 178, 255, 0.035);
+    border: 1px solid transparent;
+    border-radius: 11px;
     cursor: pointer;
-    transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform .16s cubic-bezier(0.16, 1, 0.3, 1), background .16s ease, border-color .16s ease, box-shadow .16s ease;
     min-width: 0;
     position: relative;
   }
+  .player-mini::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10%; bottom: 10%;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--c1), var(--c2));
+    opacity: 0;
+    transition: opacity .16s ease;
+  }
   .player-mini:hover {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(37, 99, 235, 0.06));
-    border-color: rgba(56, 189, 248, 0.6);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
+    background: rgba(148, 178, 255, 0.085);
+    border-color: var(--line-strong);
+    transform: translateX(2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   }
+  .player-mini:hover::before { opacity: 1; }
   .player-mini.flash {
-    border-color: rgba(56, 189, 248, 0.9);
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+    border-color: rgba(255, 208, 90, 0.85);
+    box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.18);
+    animation: flashPulse 1s ease-in-out 2;
   }
+  @keyframes flashPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(255, 208, 90, 0.18); }
+    50% { box-shadow: 0 0 0 7px rgba(255, 208, 90, 0.05); }
+  }
+  .player-rank {
+    width: 20px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 900;
+    color: #4e596c;
+    font-variant-numeric: tabular-nums;
+  }
+  .player-mini.top1 .player-rank { color: var(--t1); }
+  .player-mini.top2 .player-rank { color: var(--t2); }
+  .player-mini.top3 .player-rank { color: var(--t3); }
   .player-mini-head {
-    width: 42px; height: 42px;
-    border-radius: 10px;
+    width: 34px; height: 34px;
+    border-radius: 9px;
     overflow: hidden;
     background: #0f172a;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    border: 1px solid var(--line);
     flex-shrink: 0;
     image-rendering: pixelated;
   }
   .player-mini-head img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
   .player-mini-info { min-width: 0; flex: 1; }
   .player-mini-name {
-    font-weight: 800;
-    font-size: 0.9rem;
-    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #eaf1fb;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.1px;
   }
-  .player-mini-points { font-size: 0.7rem; font-weight: 700; color: #38bdf8; margin-top: 1px; }
+  .player-mini-points { font-size: 0.66rem; font-weight: 700; color: #5f6c82; margin-top: 1px; letter-spacing: .3px; }
+  .player-mini-tag {
+    flex-shrink: 0;
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: .6px;
+    padding: 3px 7px;
+    border-radius: 6px;
+    color: #0a0f19;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+  }
+  .player-mini-tag.low { color: var(--c1); background: rgba(255,255,255,0.05); border: 1px solid var(--line-strong); }
 
-  /* ===== TIER COLORS (Градиенты сине-голубой гаммы) ===== */
-  .tier-HT1 .tier-label { background: linear-gradient(135deg, #0284c7, #0369a1); }
-  .tier-LT1 .tier-label { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
-  .tier-HT2 .tier-label { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
-  .tier-LT2 .tier-label { background: linear-gradient(135deg, #60a5fa, #2563eb); }
-  .tier-HT3 .tier-label { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-  .tier-LT3 .tier-label { background: linear-gradient(135deg, #2563eb, #1e40af); }
-  .tier-HT4 .tier-label { background: linear-gradient(135deg, #1d4ed8, #1e3a8a); }
-  .tier-LT4 .tier-label { background: linear-gradient(135deg, #1e40af, #172554); }
-  .tier-HT5 .tier-label { background: linear-gradient(135deg, #312e81, #1e1b4b); }
-  .tier-LT5 .tier-label { background: linear-gradient(135deg, #1e1b4b, #090d16); }
-  
-  .tier-RHT1 .tier-label, .tier-RLT1 .tier-label { background: linear-gradient(135deg, #475569, #1e293b); }
-  .tier-RHT2 .tier-label, .tier-RLT2 .tier-label { background: linear-gradient(135deg, #334155, #0f172a); }
-  .tier-NONE .tier-label { background: linear-gradient(135deg, #0f172a, #070e1c); color: #64748b; }
+  /* ===== SECTION HEADER ===== */
+  .section-header { display: flex; align-items: center; gap: 14px; margin: 34px 0 14px; }
+  .section-header:first-child { margin-top: 0; }
+  .section-header h2 { font-size: 0.72rem; font-weight: 900; letter-spacing: 2.6px; text-transform: uppercase; color: #cfdcf2; flex-shrink: 0; }
+  .section-header .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line-strong), transparent); }
+  .section-header .count {
+    font-size: 0.68rem; font-weight: 900; color: var(--muted);
+    padding: 3px 10px; background: rgba(148, 178, 255, 0.05);
+    border: 1px solid var(--line); border-radius: 999px;
+  }
 
-  .empty-tier { padding: 14px 18px; color: #475569; font-size: 0.82rem; font-style: italic; }
-  .state-box { text-align: center; padding: 60px 20px; color: #64748b; }
-  .state-box h3 { color: #94a3b8; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+  .other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+  .other-grid .player-mini { --c1: #7b8698; --c2: #3c4657; }
+
+  /* ===== RANKING TABLE ===== */
+  .rank-table {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  }
+  .rank-row {
+    display: grid;
+    grid-template-columns: 64px 1fr 120px 110px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    border-bottom: 1px solid rgba(148, 178, 255, 0.05);
+    cursor: pointer;
+    transition: background .14s ease;
+  }
+  .rank-row:last-child { border-bottom: 0; }
+  .rank-row:hover { background: rgba(148, 178, 255, 0.05); }
+  .rank-head {
+    cursor: default;
+    background: rgba(148, 178, 255, 0.035);
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #5f6c82;
+    padding: 12px 18px;
+  }
+  .rank-head:hover { background: rgba(148, 178, 255, 0.035); }
+  .rank-pos { font-size: 0.95rem; font-weight: 900; color: #4e596c; font-variant-numeric: tabular-nums; }
+  .rank-row.gold .rank-pos { color: var(--t1); }
+  .rank-row.silver .rank-pos { color: var(--t2); }
+  .rank-row.bronze .rank-pos { color: var(--t3); }
+  .rank-player { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .rank-player img { width: 34px; height: 34px; border-radius: 9px; image-rendering: pixelated; background: #0f172a; border: 1px solid var(--line); flex-shrink: 0; }
+  .rank-name { font-weight: 700; font-size: 0.9rem; color: #eaf1fb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank-discord { font-size: 0.68rem; color: #5f6c82; }
+  .rank-tier {
+    justify-self: start;
+    font-size: 0.7rem; font-weight: 900; letter-spacing: .6px;
+    padding: 5px 11px; border-radius: 999px;
+    color: #0a0f19;
+    background: linear-gradient(135deg, var(--c1, #7b8698), var(--c2, #3c4657));
+  }
+  .rank-tier.dim { color: var(--c1, #b9c6d8); background: rgba(255,255,255,0.05); border: 1px solid var(--line-strong); }
+  .rank-points { text-align: right; font-weight: 900; font-size: 0.95rem; color: #fff; font-variant-numeric: tabular-nums; }
+  .rank-points small { font-size: 0.65rem; color: #5f6c82; font-weight: 700; margin-left: 3px; }
+
+  .empty-tier { padding: 16px 10px; color: #4a5468; font-size: 0.78rem; font-style: italic; text-align: center; }
+  .state-box { text-align: center; padding: 70px 20px; color: #5f6c82; }
+  .state-box h3 { color: #cfdcf2; font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
 
   /* ===== MODAL ===== */
   .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(2, 6, 14, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(3, 5, 10, 0.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -395,103 +502,126 @@
   .modal-overlay.open { opacity: 1; pointer-events: auto; }
   .modal {
     width: 100%;
-    max-width: 440px;
-    background: #081120;
-    border: 1px solid rgba(56, 189, 248, 0.15);
+    max-width: 470px;
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line-strong);
     border-radius: 22px;
-    padding: 26px;
-    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
-    transform: scale(0.95) translateY(10px);
+    padding: 0 0 24px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+    transform: scale(0.96) translateY(12px);
     transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
   }
   .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+  .modal-banner {
+    height: 96px;
+    background: linear-gradient(135deg, var(--c1, #4da3ff), var(--c2, #1e3a8a));
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(8, 12, 20, 0.78));
+  }
   .modal-close {
     position: absolute;
-    top: 16px; right: 16px;
-    width: 34px; height: 34px;
+    top: 14px; right: 14px;
+    width: 32px; height: 32px;
     border-radius: 10px;
-    background: rgba(56, 189, 248, 0.05);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+    background: rgba(5, 8, 15, 0.45);
+    border: 1px solid rgba(255,255,255,0.14);
     display: grid; place-items: center;
     cursor: pointer;
-    transition: background .2s ease;
-    z-index: 2;
+    transition: background .18s ease;
+    z-index: 3;
   }
-  .modal-close:hover { background: rgba(56, 189, 248, 0.15); }
-  .modal-close svg { stroke: #38bdf8; width: 14px; height: 14px; }
+  .modal-close:hover { background: rgba(5, 8, 15, 0.75); }
+  .modal-close svg { stroke: #fff; width: 14px; height: 14px; }
 
-  .modal-header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+  .modal-header { display: flex; align-items: flex-end; gap: 16px; padding: 0 24px; margin-top: -40px; position: relative; z-index: 2; }
   .modal-head {
-    width: 76px; height: 76px;
-    border-radius: 16px;
+    width: 84px; height: 84px;
+    border-radius: 18px;
     overflow: hidden;
     background: #0f172a;
-    border: 2px solid rgba(56, 189, 248, 0.5);
+    border: 3px solid var(--panel-2);
     flex-shrink: 0;
     image-rendering: pixelated;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
   }
   .modal-head img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
-  .modal-name { font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-  .modal-discord { color: #64748b; font-size: 0.85rem; margin-top: 3px; }
+  .modal-name { font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
+  .modal-discord { color: #a7b4c8; font-size: 0.82rem; margin-top: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
 
+  .modal-body { padding: 20px 24px 0; }
   .modal-tier-box {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 14px 18px;
-    background: rgba(56, 189, 248, 0.02);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+    padding: 14px 16px;
+    background: rgba(148, 178, 255, 0.04);
+    border: 1px solid var(--line);
     border-radius: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .modal-tier-icon {
-    width: 44px; height: 44px;
-    border-radius: 50%;
+    width: 46px; height: 46px;
+    border-radius: 13px;
     display: grid;
     place-items: center;
     flex-shrink: 0;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    color: #0a0f19;
+    background: linear-gradient(135deg, var(--c1, #4da3ff), var(--c2, #1e3a8a));
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
   }
+  .modal-tier-icon svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
   .modal-tier-info { flex: 1; min-width: 0; }
-  .modal-tier-label-text { font-size: 0.62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 2px; }
-  .modal-tier-value { font-size: 1.4rem; font-weight: 900; color: #fff; }
+  .modal-tier-label-text { font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: #5f6c82; margin-bottom: 2px; }
+  .modal-tier-value { font-size: 1.35rem; font-weight: 900; color: #fff; letter-spacing: -0.4px; }
 
   .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .modal-cell {
     padding: 14px 16px;
-    background: rgba(56, 189, 248, 0.02);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+    background: rgba(148, 178, 255, 0.04);
+    border: 1px solid var(--line);
     border-radius: 14px;
   }
-  .modal-cell-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
-  .modal-cell-value { font-size: 1.3rem; font-weight: 900; color: #38bdf8; }
-  .modal-cell-value small { font-size: 0.7rem; color: #64748b; margin-left: 2px; }
+  .modal-cell-label { font-size: 0.6rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: #5f6c82; margin-bottom: 4px; }
+  .modal-cell-value { font-size: 1.3rem; font-weight: 900; color: #fff; }
+  .modal-cell-value small { font-size: 0.68rem; color: #5f6c82; margin-left: 3px; }
   .status-badge {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     padding: 5px 12px;
     display: inline-block;
-    border-radius: 8px;
+    border-radius: 999px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
   }
-  .status-active { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.25); }
+  .status-active { background: rgba(95, 208, 166, 0.12); color: #5fd0a6; border: 1px solid rgba(95, 208, 166, 0.25); }
   .status-retired { background: rgba(248, 113, 113, 0.12); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.25); }
-  .status-none { background: rgba(100, 116, 139, 0.12); color: #94a3b8; border: 1px solid rgba(100, 116, 139, 0.25); }
+  .status-none { background: rgba(138, 151, 173, 0.12); color: var(--muted); border: 1px solid rgba(138, 151, 173, 0.22); }
 
+  @media (max-width: 1180px) {
+    .tier-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 820px) {
+    .tier-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rank-row { grid-template-columns: 44px 1fr 92px; padding: 10px 14px; }
+    .rank-points { display: none; }
+    .rank-head span:nth-child(4) { display: none; }
+  }
   @media (max-width: 720px) {
     .navbar-inner { flex-wrap: wrap; height: auto; padding: 12px 16px; gap: 10px; }
-    .nav-search { order: 3; width: 100%; }
-    .tier-row { flex-direction: column; }
-    .tier-label { width: 100%; flex-direction: row; justify-content: flex-start; padding: 10px 14px; gap: 10px; }
-    .tier-label-count { margin-left: auto; }
-    .tier-players { grid-template-columns: 1fr 1fr; }
+    .nav-search { order: 3; width: 100%; max-width: none; }
+    .hero { padding: 36px 18px 20px; }
   }
-  @media (max-width: 420px) {
-    .tier-players { grid-template-columns: 1fr; }
+  @media (max-width: 520px) {
+    .tier-columns { grid-template-columns: 1fr; }
+    .hero-stat { min-width: 104px; padding: 10px 16px; }
   }
 </style>
 </head>
@@ -520,7 +650,10 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-label">Sword · Tierlist</div>
+  <div class="hero-label">
+    <svg viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5zM13 19l6-6M16 16l4 4M19 21l2-2"/></svg>
+    Sword · Tierlist
+  </div>
   <h1>Официальный тирлист<br/>Minecraft Sword PvP</h1>
   <p>Проходи тесты, получай тиры и докажи своё превосходство в ките Sword</p>
   <div class="hero-stats">
@@ -538,6 +671,13 @@
     </div>
   </div>
 </section>
+
+<div class="switch-wrap">
+  <div class="switch" id="viewSwitch">
+    <button type="button" data-view="tiers" class="active">Тирлист</button>
+    <button type="button" data-view="ranking">Рейтинг</button>
+  </div>
+</div>
 
 <div class="board-wrap">
   <div id="boardList"></div>
@@ -560,6 +700,7 @@ const RETIRED_ORDER = ["RHT1","RLT1","RHT2","RLT2"];
 
 let PLAYERS = [];
 let loadedOnce = false;
+let currentView = "tiers";
 
 function skinUrl(p, size) {
   const uuid = (p.uuid && String(p.uuid).trim()) || "";
@@ -580,6 +721,12 @@ function pointsForTier(t) {
   const normal = isRetired(t) ? String(t).substring(1) : t;
   return TIER_POINTS[normal] || 0;
 }
+function tierNumber(t) {
+  const m = String(t || "").match(/(\d)$/);
+  return m ? m[1] : null;
+}
+function isHighTier(t) { return /^R?HT/.test(String(t || "")); }
+function playerPoints(p) { return (p.points != null ? p.points : pointsForTier(p.tier)); }
 
 const SWORD_SVG = `<svg viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5zM13 19l6-6M16 16l4 4M19 21l2-2"/></svg>`;
 const HELP_SVG = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
@@ -611,10 +758,20 @@ function updateStats() {
   document.getElementById("statRetired").textContent = PLAYERS.filter(p => p.tier && isRetired(p.tier)).length;
 }
 
-function buildPlayerMini(p) {
+function buildPlayerMini(p, rank) {
   const el = document.createElement("div");
-  el.className = "player-mini";
+  el.className = "player-mini " + tierClass(p.tier);
+  if (rank === 1) el.classList.add("top1");
+  if (rank === 2) el.classList.add("top2");
+  if (rank === 3) el.classList.add("top3");
   el.dataset.playerName = p.name;
+
+  if (rank) {
+    const pos = document.createElement("div");
+    pos.className = "player-rank";
+    pos.textContent = rank;
+    el.appendChild(pos);
+  }
 
   const head = document.createElement("div");
   head.className = "player-mini-head";
@@ -632,52 +789,70 @@ function buildPlayerMini(p) {
   name.textContent = p.name;
   const pts = document.createElement("div");
   pts.className = "player-mini-points";
-  pts.textContent = (p.points != null ? p.points : pointsForTier(p.tier)) + " pts";
+  pts.textContent = playerPoints(p) + " pts";
 
   info.appendChild(name);
   info.appendChild(pts);
   el.appendChild(head);
   el.appendChild(info);
+
+  if (p.tier) {
+    const tag = document.createElement("div");
+    tag.className = "player-mini-tag" + (isHighTier(p.tier) ? "" : " low");
+    tag.textContent = String(p.tier).replace(/\d$/, "");
+    el.appendChild(tag);
+  }
+
   el.addEventListener("click", () => openModal(p));
   return el;
 }
 
-function buildTierRow(tier, players) {
-  const row = document.createElement("div");
-  row.className = "tier-row " + tierClass(tier);
+function buildTierColumn(num, highPlayers, lowPlayers, opts) {
+  const o = opts || {};
+  const col = document.createElement("div");
+  col.className = "tier-col " + (o.colorClass || ("t" + num));
 
-  const label = document.createElement("div");
-  label.className = "tier-label";
-  const icon = document.createElement("div");
-  icon.className = "tier-label-icon";
-  icon.innerHTML = tier ? SWORD_SVG : HELP_SVG;
-  label.appendChild(icon);
+  const head = document.createElement("div");
+  head.className = "tier-col-head";
+  head.innerHTML = `
+    <div class="tier-col-badge">${o.icon || SWORD_SVG}</div>
+    <div>
+      <div class="tier-col-title">${o.title || ("Tier " + num)}</div>
+      <div class="tier-col-sub">${o.subtitle || "Sword"}</div>
+    </div>
+    <div class="tier-col-count">${highPlayers.length + lowPlayers.length}</div>
+  `;
 
-  const name = document.createElement("div");
-  name.className = "tier-label-name";
-  name.textContent = tier || "NONE";
-  label.appendChild(name);
+  const body = document.createElement("div");
+  body.className = "tier-col-body";
 
-  const cnt = document.createElement("div");
-  cnt.className = "tier-label-count";
-  cnt.textContent = players.length;
-  label.appendChild(cnt);
+  const groups = [
+    { label: o.highLabel || ("High Tier " + num), players: highPlayers },
+    { label: o.lowLabel || ("Low Tier " + num), players: lowPlayers }
+  ];
 
-  const wrap = document.createElement("div");
-  wrap.className = "tier-players";
+  let rank = 0;
+  let any = false;
+  groups.forEach(g => {
+    if (!g.players.length) return;
+    any = true;
+    const lbl = document.createElement("div");
+    lbl.className = "subtier-label";
+    lbl.innerHTML = `<span class="dot"></span>${g.label}<span class="line"></span>`;
+    body.appendChild(lbl);
+    g.players.forEach(p => body.appendChild(buildPlayerMini(p, ++rank)));
+  });
 
-  if (!players.length) {
+  if (!any) {
     const empty = document.createElement("div");
     empty.className = "empty-tier";
     empty.textContent = "Пусто";
-    wrap.appendChild(empty);
-  } else {
-    players.forEach(p => wrap.appendChild(buildPlayerMini(p)));
+    body.appendChild(empty);
   }
 
-  row.appendChild(label);
-  row.appendChild(wrap);
-  return row;
+  col.appendChild(head);
+  col.appendChild(body);
+  return col;
 }
 
 function makeSectionHeader(text, count) {
@@ -685,6 +860,104 @@ function makeSectionHeader(text, count) {
   h.className = "section-header";
   h.innerHTML = `<h2>${text}</h2><div class="line"></div><div class="count">${count}</div>`;
   return h;
+}
+
+function byPoints(a, b) { return (b.points || 0) - (a.points || 0); }
+
+function buildRankRow(p, pos) {
+  const row = document.createElement("div");
+  row.className = "rank-row " + tierClass(p.tier);
+  if (pos === 1) row.classList.add("gold");
+  if (pos === 2) row.classList.add("silver");
+  if (pos === 3) row.classList.add("bronze");
+  row.dataset.playerName = p.name;
+  row.innerHTML = `
+    <div class="rank-pos">#${pos}</div>
+    <div class="rank-player">
+      <img src="${skinUrl(p, 64)}" alt="" loading="lazy">
+      <div style="min-width:0">
+        <div class="rank-name"></div>
+        <div class="rank-discord"></div>
+      </div>
+    </div>
+    <div class="rank-tier${isHighTier(p.tier) ? "" : " dim"}">${p.tier || "NONE"}</div>
+    <div class="rank-points">${playerPoints(p)}<small>pts</small></div>
+  `;
+  row.querySelector(".rank-name").textContent = p.name;
+  row.querySelector(".rank-discord").textContent = "@" + (p.discord || p.name);
+  row.addEventListener("click", () => openModal(p));
+  return row;
+}
+
+function renderTiersView(list, active, retired, noTier) {
+  if (active.length) {
+    list.appendChild(makeSectionHeader("Активные тиры", active.length));
+    const grid = document.createElement("div");
+    grid.className = "tier-columns";
+    ["1","2","3","4","5"].forEach(num => {
+      const high = active.filter(p => p.tier === "HT" + num).sort(byPoints);
+      const low = active.filter(p => p.tier === "LT" + num).sort(byPoints);
+      grid.appendChild(buildTierColumn(num, high, low));
+    });
+    list.appendChild(grid);
+  }
+
+  if (retired.length) {
+    list.appendChild(makeSectionHeader("Retired", retired.length));
+    const grid = document.createElement("div");
+    grid.className = "tier-columns";
+    ["1","2"].forEach(num => {
+      const high = retired.filter(p => p.tier === "RHT" + num).sort(byPoints);
+      const low = retired.filter(p => p.tier === "RLT" + num).sort(byPoints);
+      if (!high.length && !low.length) return;
+      grid.appendChild(buildTierColumn(num, high, low, {
+        colorClass: "retired",
+        title: "Retired " + num,
+        subtitle: "Неактивные",
+        highLabel: "Retired High " + num,
+        lowLabel: "Retired Low " + num
+      }));
+    });
+    list.appendChild(grid);
+  }
+
+  if (noTier.length) {
+    list.appendChild(makeSectionHeader("Без тира", noTier.length));
+    const grid = document.createElement("div");
+    grid.className = "other-grid";
+    noTier.slice().sort((a, b) => a.name.localeCompare(b.name)).forEach(p => grid.appendChild(buildPlayerMini(p)));
+    list.appendChild(grid);
+  }
+}
+
+function renderRankingView(list, active, retired, noTier) {
+  const ranked = PLAYERS.filter(p => p.tier).slice().sort((a, b) => playerPoints(b) - playerPoints(a));
+
+  list.appendChild(makeSectionHeader("Общий рейтинг", ranked.length));
+  const table = document.createElement("div");
+  table.className = "rank-table";
+  const head = document.createElement("div");
+  head.className = "rank-row rank-head";
+  head.innerHTML = `<span>Место</span><span>Игрок</span><span>Тир</span><span style="text-align:right">Очки</span>`;
+  table.appendChild(head);
+
+  if (!ranked.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-tier";
+    empty.textContent = "Пока никого нет";
+    table.appendChild(empty);
+  } else {
+    ranked.forEach((p, i) => table.appendChild(buildRankRow(p, i + 1)));
+  }
+  list.appendChild(table);
+
+  if (noTier.length) {
+    list.appendChild(makeSectionHeader("Без тира", noTier.length));
+    const grid = document.createElement("div");
+    grid.className = "other-grid";
+    noTier.slice().sort((a, b) => a.name.localeCompare(b.name)).forEach(p => grid.appendChild(buildPlayerMini(p)));
+    list.appendChild(grid);
+  }
 }
 
 function renderBoard() {
@@ -696,65 +969,60 @@ function renderBoard() {
   const retired = PLAYERS.filter(p => p.tier && isRetired(p.tier));
   const noTier = PLAYERS.filter(p => !p.tier);
 
-  if (active.length) {
-    list.appendChild(makeSectionHeader("Активные тиры", active.length));
-    TIER_ORDER.forEach(tier => {
-      const players = active.filter(p => p.tier === tier).sort((a, b) => (b.points || 0) - (a.points || 0));
-      if (players.length) list.appendChild(buildTierRow(tier, players));
-    });
-  }
-
-  if (retired.length) {
-    list.appendChild(makeSectionHeader("Retired", retired.length));
-    RETIRED_ORDER.forEach(tier => {
-      const players = retired.filter(p => p.tier === tier).sort((a, b) => (b.points || 0) - (a.points || 0));
-      if (players.length) list.appendChild(buildTierRow(tier, players));
-    });
-  }
-
-  if (noTier.length) {
-    list.appendChild(makeSectionHeader("Без тира", noTier.length));
-    noTier.sort((a, b) => a.name.localeCompare(b.name));
-    list.appendChild(buildTierRow(null, noTier));
-  }
+  if (currentView === "ranking") renderRankingView(list, active, retired, noTier);
+  else renderTiersView(list, active, retired, noTier);
 }
+
+document.getElementById("viewSwitch").addEventListener("click", (e) => {
+  const btn = e.target.closest("button[data-view]");
+  if (!btn || btn.dataset.view === currentView) return;
+  currentView = btn.dataset.view;
+  document.querySelectorAll("#viewSwitch button").forEach(b => b.classList.toggle("active", b === btn));
+  renderBoard();
+});
 
 const modalOverlay = document.getElementById("modalOverlay");
 const modalBox = document.getElementById("modalBox");
 
 function openModal(p) {
-  const points = (p.points != null ? p.points : pointsForTier(p.tier));
+  const points = playerPoints(p);
   const isRet = isRetired(p.tier);
   const tierKey = p.tier ? String(p.tier).toUpperCase() : "NONE";
   const statusLabel = isRet ? "Retired" : (p.tier ? "Активный" : "Без тира");
   const statusClass = isRet ? "status-retired" : (p.tier ? "status-active" : "status-none");
+  const num = tierNumber(p.tier);
+  const colorClass = isRet ? "retired" : (num ? "t" + num : "none");
 
+  modalBox.className = "modal " + colorClass;
   modalBox.innerHTML = `
+    <div class="modal-banner"></div>
     <button class="modal-close" onclick="closeModal()">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="modal-header">
       <div class="modal-head"><img alt="${p.name}" src="${skinUrl(p, 160)}" onerror="handleSkinError(this, '${p.name}', 160)"></div>
-      <div>
+      <div style="padding-bottom:6px;min-width:0">
         <div class="modal-name">${p.name}</div>
         <div class="modal-discord">@${p.discord || p.name}</div>
       </div>
     </div>
-    <div class="modal-tier-box">
-      <div class="modal-tier-icon tier-${tierKey}"><div class="tier-label-icon">${p.tier ? SWORD_SVG : HELP_SVG}</div></div>
-      <div class="modal-tier-info">
-        <div class="modal-tier-label-text">Тир Sword</div>
-        <div class="modal-tier-value">${p.tier || 'Не назначен'}</div>
+    <div class="modal-body">
+      <div class="modal-tier-box">
+        <div class="modal-tier-icon ${tierClass(tierKey)}">${p.tier ? SWORD_SVG : HELP_SVG}</div>
+        <div class="modal-tier-info">
+          <div class="modal-tier-label-text">Тир Sword</div>
+          <div class="modal-tier-value">${p.tier || 'Не назначен'}</div>
+        </div>
       </div>
-    </div>
-    <div class="modal-grid">
-      <div class="modal-cell">
-        <div class="modal-cell-label">Очки</div>
-        <div class="modal-cell-value">${points}<small>pts</small></div>
-      </div>
-      <div class="modal-cell">
-        <div class="modal-cell-label">Статус</div>
-        <div style="margin-top: 4px;"><span class="status-badge ${statusClass}">${statusLabel}</span></div>
+      <div class="modal-grid">
+        <div class="modal-cell">
+          <div class="modal-cell-label">Очки</div>
+          <div class="modal-cell-value">${points}<small>pts</small></div>
+        </div>
+        <div class="modal-cell">
+          <div class="modal-cell-label">Статус</div>
+          <div style="margin-top: 4px;"><span class="status-badge ${statusClass}">${statusLabel}</span></div>
+        </div>
       </div>
     </div>
   `;
@@ -766,6 +1034,10 @@ function closeModal() {
   modalOverlay.classList.remove("open");
   document.body.style.overflow = "";
 }
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
 
 const navSearch = document.getElementById("navSearch");
 const navResults = document.getElementById("navSearchResults");
@@ -783,7 +1055,9 @@ navSearch.addEventListener("input", () => {
   matches.forEach(p => {
     const item = document.createElement("div");
     item.className = "search-item";
-    item.innerHTML = `<img src="${skinUrl(p, 64)}" alt=""><div class="search-item-name">${p.name}</div><div class="search-item-tier">${p.tier || 'NONE'}</div>`;
+    const tierCls = !p.tier ? "none" : (isRetired(p.tier) ? "retired" : "");
+    item.innerHTML = `<img src="${skinUrl(p, 64)}" alt=""><div class="search-item-name"></div><div class="search-item-tier ${tierCls}">${p.tier || 'NONE'}</div>`;
+    item.querySelector(".search-item-name").textContent = p.name;
     item.addEventListener("click", () => {
       navSearch.value = "";
       navResults.classList.remove("open");
