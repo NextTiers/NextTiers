@@ -750,10 +750,6 @@ const DIAMOND_SWORD_SVG = (function () {
     `</svg>`;
 })();
 function tierArrow(t) { return isHighTier(t) ? ARROW_UP_SVG : ARROW_DOWN_SVG; }
-function tierShort(t) {
-  const s = String(t || "");
-  return (isRetired(s) ? "R" : "") + (tierNumber(s) || "");
-}
 const HELP_SVG = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
 
 async function loadPlayers() {
@@ -906,7 +902,7 @@ function buildRankRow(p, pos) {
         <div class="rank-discord"></div>
       </div>
     </div>
-    <div class="rank-tier${isHighTier(p.tier) ? "" : " dim"}" title="${p.tier || "NONE"}">${p.tier ? tierArrow(p.tier) + tierShort(p.tier) : "NONE"}</div>
+    <div class="rank-tier${isHighTier(p.tier) ? "" : " dim"}">${p.tier ? SWORD_SVG + p.tier : "NONE"}</div>
     <div class="rank-points">${playerPoints(p)}<small>pts</small></div>
   `;
   row.querySelector(".rank-name").textContent = p.name;
