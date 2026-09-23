@@ -195,9 +195,9 @@
     "name": "YollTop",
     "discord": "etrryu",
     "uuid": "d93c50d6dc7f419689396ab3e610def7",
-    "tier": null,
-    "status": "none",
-    "points": 0
+    "tier": "LT3",
+    "status": "active",
+    "points": 6
   },
   {
     "name": "r33q",
