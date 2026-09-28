@@ -510,5 +510,13 @@
     "tier": "LT3",
     "status": "active",
     "points": 6
+  },
+  {
+    "name": "xo4y_Glavy",
+    "discord": "ludocock",
+    "uuid": "12b37b718a7c446a9eaf33433f692653",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
