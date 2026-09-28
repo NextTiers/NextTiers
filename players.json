@@ -1,5 +1,21 @@
 [
   {
+    "name": "NameSwitcher",
+    "discord": "stillernames",
+    "uuid": "",
+    "tier": "LT2",
+    "status": "active",
+    "points": 20
+  },
+  {
+    "name": "k0dieswii",
+    "discord": "vsv0176",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
     "name": "Toaster_34",
     "discord": "toaster_34",
     "uuid": "",
@@ -136,14 +152,6 @@
     "points": 10
   },
   {
-    "name": "k0dieswii",
-    "discord": "vsv0176",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
     "name": "ne_nefort1",
     "discord": "ne_nefort1",
     "uuid": "",
@@ -182,14 +190,6 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "NameSwitcher",
-    "discord": "stillernames",
-    "uuid": "",
-    "tier": "LT2",
-    "status": "active",
-    "points": 20
   },
   {
     "name": "bogkm",
