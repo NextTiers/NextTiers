@@ -1,21 +1,5 @@
 [
   {
-    "name": "NameSwitcher",
-    "discord": "stillernames",
-    "uuid": "",
-    "tier": "LT2",
-    "status": "active",
-    "points": 20
-  },
-  {
-    "name": "k0dieswii",
-    "discord": "vsv0176",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
     "name": "Toaster_34",
     "discord": "toaster_34",
     "uuid": "",
@@ -75,6 +59,14 @@
     "name": "VeIN273",
     "discord": "shakal00843",
     "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
+    "name": "xo4y_Glavy",
+    "discord": "ludocock",
+    "uuid": "12b37b718a7c446a9eaf33433f692653",
     "tier": null,
     "status": "none",
     "points": 0
@@ -152,6 +144,14 @@
     "points": 10
   },
   {
+    "name": "k0dieswii",
+    "discord": "vsv0176",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
     "name": "ne_nefort1",
     "discord": "ne_nefort1",
     "uuid": "",
@@ -190,6 +190,14 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "NameSwitcher",
+    "discord": "stillernames",
+    "uuid": "",
+    "tier": "LT2",
+    "status": "active",
+    "points": 20
   },
   {
     "name": "bogkm",
@@ -318,6 +326,14 @@
     "tier": "HT4",
     "status": "active",
     "points": 4
+  },
+  {
+    "name": "s9line",
+    "discord": "s9line",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "_meowmin",
@@ -464,6 +480,14 @@
     "points": 10
   },
   {
+    "name": "dualrose",
+    "discord": "dualrose",
+    "uuid": "bc0e7723ed134c47b1a7153b2c38e1e6",
+    "tier": "LT3",
+    "status": "active",
+    "points": 6
+  },
+  {
     "name": "iwantyourlips",
     "discord": "chumavoi_",
     "uuid": "",
@@ -499,30 +523,6 @@
     "name": "ILoveNata",
     "discord": "m1ss_y0u.",
     "uuid": "17266c3b4a884fcabf16c5dc146ebcdc",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "dualrose",
-    "discord": "dualrose",
-    "uuid": "bc0e7723ed134c47b1a7153b2c38e1e6",
-    "tier": "LT3",
-    "status": "active",
-    "points": 6
-  },
-  {
-    "name": "xo4y_Glavy",
-    "discord": "ludocock",
-    "uuid": "12b37b718a7c446a9eaf33433f692653",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "s9line",
-    "discord": "s9line",
-    "uuid": "",
     "tier": null,
     "status": "none",
     "points": 0
