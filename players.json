@@ -502,5 +502,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "dualrose",
+    "discord": "dualrose",
+    "uuid": "bc0e7723ed134c47b1a7153b2c38e1e6",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
