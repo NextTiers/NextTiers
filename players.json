@@ -518,5 +518,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "S9line",
+    "discord": "s9line",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
