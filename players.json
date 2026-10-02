@@ -1,5 +1,21 @@
 [
   {
+    "name": "Incvezy_WW",
+    "discord": "incvezy_ww",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
+    "name": "k0dieswii",
+    "discord": "vsv0176",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
     "name": "Toaster_34",
     "discord": "toaster_34",
     "uuid": "",
@@ -120,24 +136,8 @@
     "points": 10
   },
   {
-    "name": "Incvezy_WW",
-    "discord": "incvezy_ww",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
     "name": "iwtrope",
     "discord": ".sshwecia",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
-    "name": "k0dieswii",
-    "discord": "vsv0176",
     "uuid": "",
     "tier": "HT3",
     "status": "active",
