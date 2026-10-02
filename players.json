@@ -1,19 +1,11 @@
 [
   {
-    "name": "Incvezy_WW",
-    "discord": "incvezy_ww",
+    "name": "NameSwitcher",
+    "discord": "stillernames",
     "uuid": "",
-    "tier": "HT3",
+    "tier": "HT2",
     "status": "active",
-    "points": 10
-  },
-  {
-    "name": "k0dieswii",
-    "discord": "vsv0176",
-    "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
+    "points": 30
   },
   {
     "name": "Toaster_34",
@@ -46,6 +38,14 @@
     "tier": "LT3",
     "status": "active",
     "points": 6
+  },
+  {
+    "name": "ImMyDreams",
+    "discord": "nurzhas01",
+    "uuid": "d05fa17e569543e4a7abc15bf03effe9",
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "vqeert",
@@ -136,8 +136,24 @@
     "points": 10
   },
   {
+    "name": "Incvezy_WW",
+    "discord": "incvezy_ww",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
     "name": "iwtrope",
     "discord": ".sshwecia",
+    "uuid": "",
+    "tier": "HT3",
+    "status": "active",
+    "points": 10
+  },
+  {
+    "name": "k0dieswii",
+    "discord": "vsv0176",
     "uuid": "",
     "tier": "HT3",
     "status": "active",
@@ -182,14 +198,6 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "NameSwitcher",
-    "discord": "stillernames",
-    "uuid": "",
-    "tier": "HT2",
-    "status": "active",
-    "points": 30
   },
   {
     "name": "bogkm",
@@ -238,6 +246,14 @@
     "tier": "HT3",
     "status": "active",
     "points": 10
+  },
+  {
+    "name": "prom1seee_",
+    "discord": "prom1seee_",
+    "uuid": "9fd08535323d404b8555f97972b8cdb4",
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "TryToGetHT1",
@@ -507,22 +523,6 @@
     "name": "ILoveNata",
     "discord": "m1ss_y0u.",
     "uuid": "17266c3b4a884fcabf16c5dc146ebcdc",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "ImMyDreams",
-    "discord": "nurzhas01",
-    "uuid": "d05fa17e569543e4a7abc15bf03effe9",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "prom1seee_",
-    "discord": "prom1seee_",
-    "uuid": "9fd08535323d404b8555f97972b8cdb4",
     "tier": null,
     "status": "none",
     "points": 0
