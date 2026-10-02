@@ -510,5 +510,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "Нуржас",
+    "discord": "nurzhas01",
+    "uuid": "d05fa17e569543e4a7abc15bf03effe9",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
