@@ -147,9 +147,9 @@
     "name": "k0dieswii",
     "discord": "vsv0176",
     "uuid": "",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "ne_nefort1",
