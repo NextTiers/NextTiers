@@ -1,13 +1,5 @@
 [
   {
-    "name": "NameSwitcher",
-    "discord": "stillernames",
-    "uuid": "",
-    "tier": "HT2",
-    "status": "active",
-    "points": 30
-  },
-  {
     "name": "Toaster_34",
     "discord": "toaster_34",
     "uuid": "",
@@ -200,12 +192,28 @@
     "points": 0
   },
   {
+    "name": "NameSwitcher",
+    "discord": "stillernames",
+    "uuid": "",
+    "tier": "HT2",
+    "status": "active",
+    "points": 30
+  },
+  {
     "name": "bogkm",
     "discord": "europeslayer",
     "uuid": "b1808e04200347038d25302415cac500",
     "tier": "HT3",
     "status": "active",
     "points": 10
+  },
+  {
+    "name": "Альт😮alvin_GOD_",
+    "discord": "tpgrim",
+    "uuid": "",
+    "tier": null,
+    "status": "none",
+    "points": 0
   },
   {
     "name": "CloudConfig",
@@ -523,14 +531,6 @@
     "name": "ILoveNata",
     "discord": "m1ss_y0u.",
     "uuid": "17266c3b4a884fcabf16c5dc146ebcdc",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "Альт😮alvin_GOD_",
-    "discord": "tpgrim",
-    "uuid": "",
     "tier": null,
     "status": "none",
     "points": 0
