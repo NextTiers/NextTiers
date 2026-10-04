@@ -120,6 +120,14 @@
     "points": 6
   },
   {
+    "name": "Londonsky1337",
+    "discord": "londonpavah1y",
+    "uuid": "bd18bde2bbd84431b9505f3165e00d8b",
+    "tier": null,
+    "status": "none",
+    "points": 0
+  },
+  {
     "name": "Svetlogor",
     "discord": "kulmikrovalnovka",
     "uuid": "7c980cdbe6574346b12bb416d7888f21",
@@ -504,6 +512,14 @@
     "points": 10
   },
   {
+    "name": "54135",
+    "discord": "tyhththt",
+    "uuid": "",
+    "tier": "LT3",
+    "status": "active",
+    "points": 6
+  },
+  {
     "name": "dualrose",
     "discord": "dualrose",
     "uuid": "bc0e7723ed134c47b1a7153b2c38e1e6",
@@ -550,21 +566,5 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "Londonsky1337",
-    "discord": "londonpavah1y",
-    "uuid": "bd18bde2bbd84431b9505f3165e00d8b",
-    "tier": null,
-    "status": "none",
-    "points": 0
-  },
-  {
-    "name": "54135",
-    "discord": "tyhththt",
-    "uuid": "",
-    "tier": "LT3",
-    "status": "active",
-    "points": 6
   }
 ]
