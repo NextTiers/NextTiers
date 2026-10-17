@@ -534,5 +534,13 @@
     "tier": null,
     "status": "none",
     "points": 0
+  },
+  {
+    "name": "! perkidd",
+    "discord": "perkidd.",
+    "uuid": "e406212b131440f5bb9408319c7ddda6",
+    "tier": null,
+    "status": "none",
+    "points": 0
   }
 ]
