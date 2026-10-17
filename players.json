@@ -128,14 +128,6 @@
     "points": 10
   },
   {
-    "name": "Svetlogor",
-    "discord": "kulmikrovalnovka",
-    "uuid": "7c980cdbe6574346b12bb416d7888f21",
-    "tier": "HT3",
-    "status": "active",
-    "points": 10
-  },
-  {
     "name": "Incvezy_WW",
     "discord": "incvezy_ww",
     "uuid": "c67601b384cd4e7c86002a0abfef75b8",
@@ -334,14 +326,6 @@
     "tier": null,
     "status": "none",
     "points": 0
-  },
-  {
-    "name": "Telyxn",
-    "discord": "telyxn",
-    "uuid": "",
-    "tier": "LT2",
-    "status": "active",
-    "points": 20
   },
   {
     "name": "v417",
